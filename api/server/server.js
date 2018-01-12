@@ -42,6 +42,15 @@ app.post('/logs/new', (req, res) => {
 });
 
 
+// getting the classes
+
+app.get('/class', (req, res) => {
+  ClassRoom.find().then((classroom) => {
+    res.send({classroom})
+  }, (e) => {
+    res.status(400).send(e);
+  })
+})
 // posting the class
 app.post('/class/new', (req, res) => {
   // creating a new instance of the mongoose model Todo

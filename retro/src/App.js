@@ -13,8 +13,14 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>    <Button color="danger">IT WORKED!</Button>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">This is some text within a card body.</h5>
+
+          </div>
+        </div>
+          
         </p>
       </div>
     );

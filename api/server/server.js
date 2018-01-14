@@ -43,7 +43,6 @@ app.post('/logs/new', (req, res) => {
 
 
 // getting the classes
-
 app.get('/class', (req, res) => {
   ClassRoom.find().then((classroom) => {
     res.send({classroom})

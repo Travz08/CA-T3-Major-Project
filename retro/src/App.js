@@ -1,21 +1,56 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button } from 'reactstrap';
+import Title from './components/log.js'
+import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>    <Button color="danger">IT WORKED!</Button>
-        </p>
+        <Container-fluid>
+          <Row>
+            <Col>
+              <ListGroup className="logBase">
+                <ListGroupItem active>
+                  <ListGroupItemHeading>Monday 15th January 2018</ListGroupItemHeading>
+                  <ListGroupItemText>
+                    <Card className="postBox">
+                      <CardBody>
+                        <CardTitle className="postTitle">Title of the po  st</CardTitle>
+                        <CardSubtitle className="postSubtitle">Lesson Summary</CardSubtitle>
+                        <CardText className="postContent">
+                        
+                        <Title></Title>
+
+                        </CardText>                        
+                      </CardBody>
+                    </Card>
+
+                  </ListGroupItemText>
+                </ListGroupItem>
+
+                <ListGroupItem>
+
+                <Card className="postBox">
+                      <CardBody>
+                        <CardTitle className="postTitle">Title of the post</CardTitle>
+                        <CardSubtitle className="postSubtitle">Challenge</CardSubtitle>
+                        <CardText className="postContent">The quick brown fox jumped over the lazy dog.</CardText>                                                
+                      </CardBody>
+                    </Card>
+
+                </ListGroupItem>
+
+              </ListGroup>
+            </Col>
+
+            
+          </Row>
+        </Container-fluid>
       </div>
     );
   }

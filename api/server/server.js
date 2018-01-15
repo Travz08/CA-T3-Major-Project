@@ -30,8 +30,12 @@ passport.use(new GoogleStrategy({
 // 2nd argument will be telling express to pass user to passport
 app.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
-})
+  })
 );
+
+// for when user gets callback
+// difference to route above is that this url will have the code from google.
+app.get('/auth/google/callback', passport.authenticate('google'))
 
 
 

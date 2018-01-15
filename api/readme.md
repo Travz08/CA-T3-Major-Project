@@ -69,4 +69,25 @@ We are saying here that whenever a user comes to that route, we are starting the
 
 The string google is a bit weird hey? We have never explicitly defined google or registered it with passport. Internally the GoogleStrategy has a little code called 'google' saved as a string. That is how passport knows that the little google string will mean 'hey go use the Google Strategy defined above'
 
-The scope specifies to the actual google servers, what access we want to the google servers. 
+The scope specifies to the actual google servers, what access we want to the google servers.
+
+
+Ok, cool let's try and go to the route. Turning on the server we get directed to google, great! However we get shown the error redirect_uri_mismatch.
+
+The reason is because we did not set up our Oauth account properly. On the callbackURL property, where we say send user back to auth/google/callback we had not properly set up our oAuth account that was a valid url to be redirected to. It is entirely security related. Copy the link provided by the Google Docs and added the authorized redirect URI.
+
+We now need a callback that will handle the route exchange.
+
+Once we allow our route, viola we now get to google select your email screen, how good! However we are still have not done anything with the user. When we select the email from the google screen, we get hung up there. If you look at the console however we get a long string. This is from the code below
+
+```js
+passport.use(new GoogleStrategy({
+  clientID: keys.googleClientID,
+  clientSecret: keys.googleClientSecret,
+  callbackURL: '/auth/google/callback'
+}, (accessToken) => {
+  console.log(accessToken)
+  })
+);
+
+```

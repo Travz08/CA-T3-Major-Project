@@ -9,14 +9,16 @@
     "test-watch": "nodemon --exec 'npm test'"
   },
   "engines": {
-  "node": "8.9.1"
-},
+    "node": "8.9.1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mongoose": "^4.13.9"
+    "mongoose": "^4.13.9",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
     "mongodb": "^3.0.1"

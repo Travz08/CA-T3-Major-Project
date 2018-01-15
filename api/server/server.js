@@ -6,8 +6,34 @@ var {ClassRoom} = require('./models/classroom')
 var {mongoose} = require('./db/mongoose');
 // var {Tag} = require('./models/tag')
 
-var app = express();
+// Google Oauth and passport
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('./config/keys');
+
+
+const app = express();
 app.use(bodyParser.json());
+
+
+
+passport.use(new GoogleStrategy({
+  clientID: keys.googleClientID,
+  clientSecret: keys.googleClientSecret,
+  callbackURL: '/auth/google/callback'
+}, (accessToken) => {
+  console.log(accessToken)
+  })
+);
+
+// route to start google auth
+// 2nd argument will be telling express to pass user to passport
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+})
+);
+
+
 
 const port = process.env.PORT || 27017;
 
@@ -93,17 +119,17 @@ app.post('/post/new', (req, res) => {
   });
 });
 
-// app.post('/tag/new', (req, res) => {
-//   var tag = new Tag ({
-//     tag_name: req.body.type,
-//     post_id: req.body.post_id
-//   })
-// });
-
-
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
 
 module.exports = {app};
+
+
+// app.post('/tag/new', (req, res) => {
+//   var tag = new Tag ({
+//     tag_name: req.body.type,
+//     post_id: req.body.post_id
+//   })
+// });

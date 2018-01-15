@@ -78,7 +78,7 @@ The reason is because we did not set up our Oauth account properly. On the callb
 
 We now need a callback that will handle the route exchange.
 
-Once we allow our route, viola we now get to google select your email screen, how good! However we are still have not done anything with the user. When we select the email from the google screen, we get hung up there. If you look at the console however we get a long string. This is from the code below
+Once we allow our route, viola we now get to google select your email screen, how good! However we are still have not done anything with the user. When we select the email from the google screen, we get hung up there. If you look at the console however we get a long string. This is from the code below.
 
 ```js
 passport.use(new GoogleStrategy({
@@ -91,3 +91,36 @@ passport.use(new GoogleStrategy({
 );
 
 ```
+
+```js
+app.get('/auth/google/callback', passport.authenticate('google'))
+```
+This is the route handler for when the user gets routed back from Google to localhost:27017/auth/google/callback?code=x
+
+This takes the user request and does the code exchange. So this route is for when the user visits auth/google/callback. We are telling passport to handle this request. The interesting thing about this route is that when the user gets sent back to auth/google/callback inside of the URL they will have the code='some string' available. Passport will then see that the code is in the URL and will say 'Oh the user is not attempting to be authenticated for the first time, they want to turn it into a profile.'
+
+
+Since the console logged the accessToken, this means it is in here, the callback function the second argument to the GoogleStrategy was executed. This is our opporutnity to take the user info and save it to our database.
+
+### Access and Refresh Tokens
+
+```js
+passport.use(new GoogleStrategy({
+  clientID: keys.googleClientID,
+  clientSecret: keys.googleClientSecret,
+  callbackURL: '/auth/google/callback'
+}, (accessToken, refreshToken, profile, done) => {
+  console.log('Access Token', accessToken)
+  console.log('Refresh Token', refreshToken)
+  console.log('Profile', profile)
+  })
+);
+```
+
+Looking at the flow, every time we make the request, the browser just hangs. This is because the request is pending on our server and is waiting for us to do something.
+
+Access Token is the token that allows us to talk to Google. We have been given permission from the user to manage/read their accounts.
+
+Refresh Token allows us to refresh the access token. The Access token expires over time so this refreshes the access token.
+
+Great, so we got access to all this info but we need to store it.

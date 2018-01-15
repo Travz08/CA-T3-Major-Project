@@ -21,8 +21,10 @@ passport.use(new GoogleStrategy({
   clientID: keys.googleClientID,
   clientSecret: keys.googleClientSecret,
   callbackURL: '/auth/google/callback'
-}, (accessToken) => {
-  console.log(accessToken)
+}, (accessToken, refreshToken, profile, done) => {
+  console.log('Access Token', accessToken)
+  console.log('Refresh Token', refreshToken)
+  console.log('Profile', profile)
   })
 );
 
@@ -35,12 +37,16 @@ app.get('/auth/google', passport.authenticate('google', {
 
 // for when user gets callback
 // difference to route above is that this url will have the code from google.
+// passport, GoogleStrategy will see that and say we will use the code and turn it into a profile.
 app.get('/auth/google/callback', passport.authenticate('google'))
 
 
 
 const port = process.env.PORT || 27017;
 
+
+
+// CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

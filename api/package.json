@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
     "test": "export NODE_ENV=test && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
@@ -17,6 +18,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.9",
+    "nodemon": "^1.14.11",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0"
   },

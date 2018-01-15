@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Title from './components/log.js'
 import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+
+
+
 
 class App extends Component {
   render() {
@@ -16,9 +20,13 @@ class App extends Component {
                   <ListGroupItemText>
                     <Card className="postBox">
                       <CardBody>
-                        <CardTitle className="postTitle">Title of the post</CardTitle>
+                        <CardTitle className="postTitle">Title of the po  st</CardTitle>
                         <CardSubtitle className="postSubtitle">Lesson Summary</CardSubtitle>
-                        <CardText className="postContent">The quick brown fox jumped over the lazy dog.</CardText>                        
+                        <CardText className="postContent">
+                        
+                        <Title></Title>
+
+                        </CardText>                        
                       </CardBody>
                     </Card>
 

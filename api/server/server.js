@@ -1,50 +1,23 @@
 const express = require('express');
+require('./models/user');
+require('./services/passport')
 const bodyParser = require('body-parser');
 var {Log} = require('./models/logs');
 var {Post} = require('./models/post');
-var {ClassRoom} = require('./models/classroom')
+var {ClassRoom} = require('./models/classroom');
 var {mongoose} = require('./db/mongoose');
+
 // var {Tag} = require('./models/tag')
-
-// Google Oauth and passport
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('./config/keys');
-
 
 const app = express();
 app.use(bodyParser.json());
 
-
-
-passport.use(new GoogleStrategy({
-  clientID: keys.googleClientID,
-  clientSecret: keys.googleClientSecret,
-  callbackURL: '/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => {
-  console.log('Access Token', accessToken)
-  console.log('Refresh Token', refreshToken)
-  console.log('Profile', profile)
-  })
-);
-
-// route to start google auth
-// 2nd argument will be telling express to pass user to passport
-app.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-  })
-);
-
-// for when user gets callback
-// difference to route above is that this url will have the code from google.
-// passport, GoogleStrategy will see that and say we will use the code and turn it into a profile.
-app.get('/auth/google/callback', passport.authenticate('google'))
-
+// oAuth routes.
+// same as going authRoutes(app) if we imported above.
+require('./routes/authRoutes')(app);
 
 
 const port = process.env.PORT || 27017;
-
-
 
 // CORS
 app.use(function(req, res, next) {

@@ -1,16 +1,25 @@
 const express = require('express');
+require('./models/user');
+require('./services/passport')
 const bodyParser = require('body-parser');
 var {Log} = require('./models/logs');
 var {Post} = require('./models/post');
-var {ClassRoom} = require('./models/classroom')
+var {ClassRoom} = require('./models/classroom');
 var {mongoose} = require('./db/mongoose');
+
 // var {Tag} = require('./models/tag')
 
-var app = express();
+const app = express();
 app.use(bodyParser.json());
+
+// oAuth routes.
+// same as going authRoutes(app) if we imported above.
+require('./routes/authRoutes')(app);
+
 
 const port = process.env.PORT || 27017;
 
+// CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -49,7 +58,6 @@ app.post('/logs/new', (req, res) => {
 
 
 // getting the classes
-
 app.get('/class', (req, res) => {
   ClassRoom.find().then((classroom) => {
     res.send({classroom})
@@ -100,17 +108,17 @@ app.post('/post/new', (req, res) => {
   });
 });
 
-// app.post('/tag/new', (req, res) => {
-//   var tag = new Tag ({
-//     tag_name: req.body.type,
-//     post_id: req.body.post_id
-//   })
-// });
-
-
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
 
 module.exports = {app};
+
+
+// app.post('/tag/new', (req, res) => {
+//   var tag = new Tag ({
+//     tag_name: req.body.type,
+//     post_id: req.body.post_id
+//   })
+// });

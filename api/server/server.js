@@ -1,15 +1,30 @@
 const express = require('express');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 require('./models/user');
-require('./services/passport')
+require('./services/passport');
+const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 var {Log} = require('./models/logs');
 var {Post} = require('./models/post');
 var {ClassRoom} = require('./models/classroom');
 var {mongoose} = require('./db/mongoose');
 
-// var {Tag} = require('./models/tag')
 
 const app = express();
+// telling express that we are using cookies.
+app.use(
+  cookieSession({
+    // how long cookie will last - in miliseconds
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    // key we will use to encrypt cookie - in config.
+    keys: [keys.cookieKey]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+// telling express to use body parser
 app.use(bodyParser.json());
 
 // oAuth routes.

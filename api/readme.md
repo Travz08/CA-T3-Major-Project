@@ -124,3 +124,45 @@ Access Token is the token that allows us to talk to Google. We have been given p
 Refresh Token allows us to refresh the access token. The Access token expires over time so this refreshes the access token.
 
 Great, so we got access to all this info but we need to store it.
+
+
+
+### Passport Callbacks
+
+When we are finished with passport and google strategy and need to call done.
+
+```js
+if (existingUser) {
+  // we have user with an id in our database.
+  done(null, existingUser);
+}
+```
+Tells passport, hey great, we found the user and we are done with you and google.
+
+```js
+User.findOne({ googleId: profile.id }).then((existingUser => {
+  if (existingUser) {
+    // we have user with an id in our database.
+    done(null, existingUser);
+  } else {
+    // we will create a user into our database.
+    // remember calling new User - creates a mongoose model instance.
+    // A model instance represents a single record inside of the collection.
+    new User({
+      googleId: profile.id,
+       profileName: profile.displayName,
+        first_name: profile.name.givenName,
+         last_name: profile.name.familyName
+       })
+       .save()
+       .then(user => done(null, user));
+  }
+```
+
+Remember calling new User - creates a mongoose model instance. A model instance represents a single record inside of the collection.
+
+We then save that instance and then in the callback we get another model instance. They both represent the same nderlying model/record inside of our collection. In convention we always use the one provided to us in the promise callback (user).
+
+### Encoding Users
+
+We need to take the user model, and pass it a cookie that says they are that person. 

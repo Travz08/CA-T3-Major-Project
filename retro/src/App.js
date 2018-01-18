@@ -1,56 +1,44 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Title from './components/log.js'
-import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import Logs from './components/logs';
+import Post from './components/post';
 
-
+//bring in the api calls component to save into state on app load
+import * as logsAPI from './apiCalls/logs'
+import * as postsAPI from './apiCalls/posts'
 
 
 class App extends Component {
+
+  state = { logs: null, posts: null}
+
+
+  componentDidMount() {
+    logsAPI.all()
+      .then(logData => {
+        this.setState({ logs: logData.logs })
+      })
+
+    postsAPI.all()
+      .then(postData => {
+        this.setState({ posts: postData.post })
+      })
+    
+  }
+
+
+
   render() {
+    const { logs, posts } = this.state;
+    // console.log(logs, posts)
+    
     return (
-      <div className="App">
-        <Container-fluid>
-          <Row>
-            <Col>
-              <ListGroup className="logBase">
-                <ListGroupItem active>
-                  <ListGroupItemHeading>Monday 15th January 2018</ListGroupItemHeading>
-                  <ListGroupItemText>
-                    <Card className="postBox">
-                      <CardBody>
-                        <CardTitle className="postTitle">Title of the po  st</CardTitle>
-                        <CardSubtitle className="postSubtitle">Lesson Summary</CardSubtitle>
-                        <CardText className="postContent">
-                        
-                        <Title></Title>
+     <div className="App">
+        <Logs logs={logs}/>
+        <Post posts={posts}/>
+        
 
-                        </CardText>                        
-                      </CardBody>
-                    </Card>
-
-                  </ListGroupItemText>
-                </ListGroupItem>
-
-                <ListGroupItem>
-
-                <Card className="postBox">
-                      <CardBody>
-                        <CardTitle className="postTitle">Title of the post</CardTitle>
-                        <CardSubtitle className="postSubtitle">Challenge</CardSubtitle>
-                        <CardText className="postContent">The quick brown fox jumped over the lazy dog.</CardText>                                                
-                      </CardBody>
-                    </Card>
-
-                </ListGroupItem>
-
-              </ListGroup>
-            </Col>
-
-            
-          </Row>
-        </Container-fluid>
       </div>
     );
   }

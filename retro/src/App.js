@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/header.js'
-import Landing from './components/landing'
-import Dashboard from './components/dashboard.js'
+import Header from './components/header.js';
+import Landing from './components/landing';
+import Dashboard from './components/dashboard.js';
+import Classroom from './components/classroom';
 import Title from './components/log.js'
 import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
@@ -24,6 +25,7 @@ class App extends Component {
             <div>
             <Header />
             <Switch>
+              <Route exact path="/classroom" component={Classroom}></Route>
               <Route path="/logs" component={Dashboard}></Route>
               <Route path='/' component={Landing}></Route>
               </Switch>

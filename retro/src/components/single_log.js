@@ -1,23 +1,23 @@
 import React from 'react';
-import SinglePost from './post'
+import Post from './posts'
 
 import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 
-export default function Log(props) {
-    const { _id, text, classroom_id } = props;
+export default function Log({posts, log}) {
+    // const { _id, text, classroom_id } = props;
 
-
+    // console.log(log.text)
     return (
-            
+
         <div>
 
             <span>
-                Classroom ID: {classroom_id}
+                Classroom ID: {log.classroom_id}
             </span>
             <br/>
             <span>
-                ID: {_id}
+                ID: {log._id}
             </span>
             <br/>
             <Container-fluid>
@@ -25,12 +25,12 @@ export default function Log(props) {
                     <Col>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
-                            <ListGroupItemHeading>{text} 15th January 2018</ListGroupItemHeading>
+                            <ListGroupItemHeading>{log.text} 15th January 2018</ListGroupItemHeading>
                         </ListGroupItem>
 
                         <ListGroupItem>
 
-                            <SinglePost />
+                            <Post posts={posts} logId={log._id}/>
 
 
                         </ListGroupItem>
@@ -38,14 +38,10 @@ export default function Log(props) {
                     </ListGroup>
                     </Col>
 
-                    
+
                 </Row>
             </Container-fluid>
         </div>
 
     )
 }
-
-
-
-

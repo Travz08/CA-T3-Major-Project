@@ -6,22 +6,12 @@ import * as actions from './actions'
 import logo from './logo.svg';
 import './App.css';
 import Logs from './components/logs';
-import Post from './components/post';
-
+// import Post from './components/posts';
+import ClassRoomForm from './components/classroom';
 //bring in the api calls component to save into state on app load
 import * as logsAPI from './apiCalls/logs'
 import * as postsAPI from './apiCalls/posts'
-
-  handleClassRoomSubmission = (classroom) => {
-    // console.log(title,yearReleased);
-    //give it the previous state and then mutate it
-    this.setState(( {classrooms}) => (
-      { classrooms: [ classroom].concat(classrooms) }
-    ));
-
-
-  retroAPI.save(classroom);
-  }
+import * as retroAPI from './apiCalls/retrospect';
 
 class App extends Component {
 
@@ -39,9 +29,22 @@ class App extends Component {
         this.setState({ posts: postData.post })
       })
 
+    retroAPI.all()
+      .then(classrooms => {
+        this.setState({classrooms})
+      })
   }
 
+  handleClassRoomSubmission = (classroom) => {
+    // console.log(title,yearReleased);
+    //give it the previous state and then mutate it
+    this.setState(( {classrooms}) => (
+      { classrooms: [ classroom].concat(classrooms) }
+    ));
 
+
+  retroAPI.save(classroom);
+  }
 
   render() {
     const { logs, posts } = this.state;
@@ -49,11 +52,10 @@ class App extends Component {
 
     return (
      <div className="App">
-        <Logs logs={logs}/>
-        <Post posts={posts}/>
+        <Logs logs={logs} posts={posts}/>
+        <ClassRoomForm onSubmit={this.handleClassRoomSubmission} />
 
-
-      </div>
+    </div>
     );
   }
 }

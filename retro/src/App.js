@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import logo from './logo.svg';
 import './App.css';
+<<<<<<< HEAD
 import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
@@ -18,8 +19,42 @@ class App extends Component {
     this.props.fetchUser();
   }
 
+=======
+import Logs from './components/logs';
+import Post from './components/post';
+
+//bring in the api calls component to save into state on app load
+import * as logsAPI from './apiCalls/logs'
+import * as postsAPI from './apiCalls/posts'
+
+
+class App extends Component {
+
+  state = { logs: null, posts: null}
+
+
+  componentDidMount() {
+    logsAPI.all()
+      .then(logData => {
+        this.setState({ logs: logData.logs })
+      })
+
+    postsAPI.all()
+      .then(postData => {
+        this.setState({ posts: postData.post })
+      })
+    
+  }
+
+
+
+>>>>>>> 3a46d4fc231625c25756049fa13b76c15c1974a0
   render() {
+    const { logs, posts } = this.state;
+    // console.log(logs, posts)
+    
     return (
+<<<<<<< HEAD
       <div className="App">
         <BrowserRouter>
             <div>
@@ -31,6 +66,13 @@ class App extends Component {
               </Switch>
             </div>
         </BrowserRouter>
+=======
+     <div className="App">
+        <Logs logs={logs}/>
+        <Post posts={posts}/>
+        
+
+>>>>>>> 3a46d4fc231625c25756049fa13b76c15c1974a0
       </div>
     );
   }

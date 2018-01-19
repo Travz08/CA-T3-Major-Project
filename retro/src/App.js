@@ -6,6 +6,11 @@ import logo from './logo.svg';
 import './App.css';
 import Logs from './components/logs';
 import Post from './components/post';
+import Header from './components/header.js';
+import Landing from './components/landing';
+import Dashboard from './components/dashboard.js';
+import Classroom from './components/classroom';
+import Title from './components/log.js'
 
 //bring in the api calls component to save into state on app load
 import * as logsAPI from './apiCalls/logs'
@@ -18,6 +23,9 @@ class App extends Component {
 
 
   componentDidMount() {
+    // action creator - will start the action. 
+    this.props.fetchUser();
+
     logsAPI.all()
       .then(logData => {
         this.setState({ logs: logData.logs })
@@ -29,19 +37,24 @@ class App extends Component {
       })
 
   }
-
-
-
   render() {
     const { logs, posts } = this.state;
-    // console.log(logs, posts)
+
 
     return (
      <div className="App">
+
+     <BrowserRouter>
+      <div>
+        <Header />
+        <Route exact path="/classroom" component={Classroom}></Route>
+        <Route path="/logs" component={Dashboard}></Route>
+        <Route path='/' component={Landing}></Route>
+     </div>
+
+     </BrowserRouter>
         <Logs logs={logs}/>
         <Post posts={posts}/>
-
-
       </div>
     );
   }

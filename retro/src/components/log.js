@@ -7,9 +7,8 @@ import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup,
 export default function Log(props) {
     const { _id, text, classroom_id } = props;
 
-
     return (
-            
+
         <div>
 
             <span>
@@ -38,14 +37,10 @@ export default function Log(props) {
                     </ListGroup>
                     </Col>
 
-                    
+
                 </Row>
             </Container-fluid>
         </div>
 
     )
 }
-
-
-
-

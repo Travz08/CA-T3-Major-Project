@@ -1,4 +1,6 @@
 const passport = require('passport');
+const cookieSession = require('cookie-session');
+const keys = require('../config/keys');
 
 module.exports = (app) => {
   // route to start google auth
@@ -11,10 +13,13 @@ module.exports = (app) => {
   // for when user gets callback
   // difference to route above is that this url will have the code from google.
   // passport, GoogleStrategy will see that and say we will use the code and turn it into a profile.
-  app.get('/auth/google/callback', passport.authenticate('google'))
+  app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+    res.redirect('/logs')
+  })
 
   app.get('/api/logout', (req, res) => {
     req.logout();
+    res.redirect('/')
     res.send(req.user);
   });
 

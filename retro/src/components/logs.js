@@ -1,19 +1,20 @@
 import React from 'react';
-import SingleLog from './log';
+import SingleLog from './single_log';
 
-export default function Logs({ logs }) {
+export default function Logs({ logs, posts }) {
 
-    return (
-        <div>
-            <h1>something</h1>
-        {
-            !!logs ? (
-                logs.map(log => (
-                    <SingleLog _id={log._id} text={log.text} classroom_id={log.classroom_id} />
-                    
-                ))
-            ) : ('No Logs')
-        }
-        </div>
+  if (!logs) {
+    return <div> Loading Logs.. </div>
+  }
+
+  const logsItems = logs.map((log) => {
+    return <SingleLog posts={posts} log={log} />
+  });
+
+
+  return (
+      <ul className="col-md-12 list-group">
+        {logsItems}
+      </ul>
     )
 }

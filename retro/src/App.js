@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 // importing actions
 import * as actions from './actions'
 // importing components
-import Post from './components/posts';
 import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
@@ -17,11 +16,12 @@ import logo from './logo.svg';
 import './App.css';
 import Logs from './components/logs';
 // import Post from './components/posts';
-import ClassRoomForm from './components/classroom';
+import ClassRoomForm from './components/classform';
+import ClassRoom from './components/classroom';
 //bring in the api calls component to save into state on app load
 import * as logsAPI from './apiCalls/logs'
 import * as postsAPI from './apiCalls/posts'
-import * as retroAPI from './apiCalls/retrospect';
+import * as classAPI from './apiCalls/classrooms';
 
 
 
@@ -44,9 +44,9 @@ class App extends Component {
         this.setState({ posts: postData.post })
       })
 
-    retroAPI.all()
-      .then(classrooms => {
-        this.setState({classrooms})
+    classAPI.all()
+      .then(classData => {
+        this.setState({classrooms: classData.classroom})
       })
   }
 
@@ -57,7 +57,8 @@ class App extends Component {
       { classrooms: [ classroom].concat(classrooms) }
     ));
 
-  retroAPI.save(classroom);
+
+  classAPI.save(classroom);
   }
 
   handlePostSubmission = (post) => {
@@ -66,29 +67,26 @@ class App extends Component {
       { posts: [post].concat(posts) }
     ));
 
-    retroAPI.store(post);
+    postsAPI.store(post);
   }
 
 
   render() {
-    const { logs, posts } = this.state;
+    const { logs, posts, classrooms } = this.state;
     // console.log(logs, posts)
 
     return (
      <div className="App">
-
      <BrowserRouter>
       <div>
         <Header />
-        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
-        <Route exact path="/dashboard" component={Dashboard}></Route>
-        <Route exact path="/posts/new" render={() => (<PostForm onSubmit={this.handlePostSubmission} /> )} />
-        <Route exact path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
+        <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route path="/dashboard" component={Dashboard}></Route>
+        <Route path="/posts/new" render={() => (<PostForm onSubmit={this.handlePostSubmission} /> )} />
+        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>
-
      </BrowserRouter>
-
     </div>
     );
   }

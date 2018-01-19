@@ -68,6 +68,7 @@ app.post('/logs/new', (req, res) => {
   // creating a new instance of the mongoose model Todo
   var log = new Log({
     text: req.body.text,
+    date: req.body.date,
     classroom_id: req.body.classroom_id
   });
 

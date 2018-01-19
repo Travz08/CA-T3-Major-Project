@@ -1,32 +1,44 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
+import React from 'react';
 
-class Classroom extends Component {
+export default function ClassRoomForm({ onSubmit }) {
 
-  renderFirstName() {
-    console.log(this.props.auth)
-    return  this.props.auth.first_name;
-  }
+// This function pushes it up the line you can embed a function within a function then it pushes it
+// to the onSubmit function
 
-
-  render() {
-    if(!this.props.auth) {
-    return (<div> Loading </div>)
-  }
-
-    return (
-      <div>
-        <h2>This is the classroom</h2>
-          <h3>{this.renderFirstName()}</h3>
-      </div>
-    )
-  }
-};
-
-function mapStateToProps(state) {
- // returning an object, and passing it to Header as props.
-  return {auth: state.auth}
+function handleFormSubmission(event) {
+  //this preventDefault tells the DOM
+  // when you click on a button on a form or div that click propogates up each element has a default action
+  // prevent default prevents the default action of the element
+  // event.stopPropagation - prevents the event from going up the chain
+  event.preventDefault();
+  // console.log(event.target.elements);
+  const {elements} = event.target;
+  const class_name = elements["name"].value;
+  const date_started = elements["date_started"].value;
+  const date_ended = elements["date_ended"].value;
+  // const comments = elements["comments"].value;
+  onSubmit({class_name, date_started, date_ended});
 }
 
-export default connect(mapStateToProps)(Classroom)
+  return (
+    <div className="container row">
+      <form className="col s12" onSubmit={handleFormSubmission}>
+      <div className="row">
+        <div className="input-field col s6">
+          <input id="classroom_name" type="text" className="validate" name="name"/>
+          <label htmlFor="classroom_name" >Name &nbsp;</label>
+        </div>
+        <div className="input-field col s6">
+          <input id="date_started" type="date" className="validate" name="date_started"/>
+          <label htmlFor="date_started" >Year &nbsp;</label>
+        </div>
+        <div className="input-field col s6">
+          <input id="date_ended" type="date" className="validate" name="date_ended"/>
+          <label htmlFor="date_ended" >Year &nbsp;</label>
+        </div>
+      </div>
+        <button className="waves-effect waves-light btn" type="submit">Create Class Room</button>
+      </form>
+    </div>
+  )
+}

@@ -16,16 +16,13 @@ export default function Log({posts, log}) {
                 Classroom ID: {log.classroom_id}
             </span>
             <br/>
-            <span>
-                ID: {log._id}
-            </span>
-            <br/>
+
             <Container-fluid>
                 <Row>
                     <Col>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
-                            <ListGroupItemHeading>{log.text} 15th January 2018</ListGroupItemHeading>
+                            <ListGroupItemHeading>{log.text} 15th Jan 2018 ID: {log._id}</ListGroupItemHeading>
                         </ListGroupItem>
 
                         <ListGroupItem>

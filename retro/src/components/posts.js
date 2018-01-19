@@ -5,7 +5,7 @@ import SinglePost from './single_post'
 export default function Post({ logId, posts }) {
     // const { _id, text, classroom_id } = props;
     // const { title, content, log_id } = posts;
-    console.log(logId)
+    // console.log('from posts component', logId)
     if (!posts) {
       return <div> Loading Posts.. </div>
     }
@@ -14,7 +14,7 @@ export default function Post({ logId, posts }) {
     // tried but it only shows last days posts..
     const postsContent = posts.map((post) => {
       // if (post.log_id == logId) {
-        return <SinglePost post={post} />
+        return <SinglePost post={post} logId={logId} />
       // }
     });
 

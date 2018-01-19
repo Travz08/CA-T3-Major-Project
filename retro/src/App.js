@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+// redux import
 import { connect } from 'react-redux';
+// importing actions
 import * as actions from './actions'
+// importing components
+import Post from './components/post';
+import Header from './components/header.js';
+import Landing from './components/landing';
+import Dashboard from './components/dashboard.js';
+import Classroom from './components/classroom';
+
+
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
 import './App.css';
@@ -12,6 +22,8 @@ import ClassRoomForm from './components/classroom';
 import * as logsAPI from './apiCalls/logs'
 import * as postsAPI from './apiCalls/posts'
 import * as retroAPI from './apiCalls/retrospect';
+
+
 
 class App extends Component {
 
@@ -55,6 +67,16 @@ class App extends Component {
 
     return (
      <div className="App">
+
+     <BrowserRouter>
+      <div>
+        <Header />
+        <Route exact path="/classroom" component={Classroom}></Route>
+        <Route path="/logs" component={Dashboard}></Route>
+        <Route path='/' component={Landing}></Route>
+     </div>
+
+     </BrowserRouter>
         <Logs logs={logs} posts={posts}/>
         <ClassRoomForm onSubmit={this.handleClassRoomSubmission} />
 

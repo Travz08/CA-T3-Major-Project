@@ -13,7 +13,7 @@ export default function Logs({ logs, posts }) {
 
 
   return (
-      <ul className="col-md-4 list-group">
+      <ul className="col-md-12 list-group">
         {logsItems}
       </ul>
     )

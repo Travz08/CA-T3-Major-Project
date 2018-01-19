@@ -8,22 +8,30 @@ const bodyParser = require('body-parser');
 var {Log} = require('./models/logs');
 var {Post} = require('./models/post');
 var {ClassRoom} = require('./models/classroom');
-var {mongoose} = require('./db/mongoose');
+var mongoose = require('./db/mongoose');
+const {authenticate} = require('./middleware/authenticate');
+
 
 
 const app = express();
-// telling express that we are using cookies.
+// telling express that we are using cookies, this will flow down to initialize and session.
 app.use(
   cookieSession({
-    // how long cookie will last - in miliseconds
+    // how long cookie will last - in miliseconds - this is one month.
     maxAge: 30 * 24 * 60 * 60 * 1000,
     // key we will use to encrypt cookie - in config.
     keys: [keys.cookieKey]
   })
 );
 
+//initialises authentication module.
 app.use(passport.initialize());
+
+//session acts as a middleware to alter the req object
+//and change the 'user' value that is currently the session id (from the client cookie)
+// into the true deserialized user object - refer to passport.js serialize and deserailzie.
 app.use(passport.session());
+
 // telling express to use body parser
 app.use(bodyParser.json());
 
@@ -32,7 +40,7 @@ app.use(bodyParser.json());
 require('./routes/authRoutes')(app);
 
 
-const port = process.env.PORT || 27017;
+const port = process.env.PORT || 5000;
 
 // CORS
 app.use(function(req, res, next) {
@@ -82,7 +90,7 @@ app.get('/class', (req, res) => {
 })
 // posting the class
 app.post('/class/new', (req, res) => {
-  // creating a new instance of the mongoose model Todo
+  // creating a new instance of the mongoose model class
   var studyClass = new ClassRoom ({
     class_name: req.body.class_name,
     date_started: req.body.date_started,

@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 
 const classRoomSchema = mongoose.Schema({
@@ -7,5 +7,5 @@ const classRoomSchema = mongoose.Schema({
   date_ended: Date,
 });
 
-var ClassRoom = mongoose.model('Classroom', classRoomSchema)
+const ClassRoom = mongoose.model('Classroom', classRoomSchema)
 module.exports = {ClassRoom}

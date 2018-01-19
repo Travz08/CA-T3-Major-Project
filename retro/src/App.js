@@ -1,59 +1,98 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+// redux import
+import { connect } from 'react-redux';
+// importing actions
+import * as actions from './actions'
+// importing components
+import Post from './components/posts';
+import Header from './components/header.js';
+import Landing from './components/landing';
+import Dashboard from './components/dashboard.js';
+import Classroom from './components/classroom';
+import PostForm from './components/postform';
+
+// import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
 import './App.css';
-import Title from './components/log.js'
-import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
-
+import Logs from './components/logs';
+// import Post from './components/posts';
+import ClassRoomForm from './components/classroom';
+//bring in the api calls component to save into state on app load
+import * as logsAPI from './apiCalls/logs'
+import * as postsAPI from './apiCalls/posts'
+import * as retroAPI from './apiCalls/retrospect';
 
 
 
 class App extends Component {
+
+  state = { logs: null, posts: null}
+
+
+  componentDidMount() {
+    // action creator - will start the action.
+    this.props.fetchUser();
+
+    logsAPI.all()
+      .then(logData => {
+        this.setState({ logs: logData.logs })
+      })
+
+    postsAPI.all()
+      .then(postData => {
+        this.setState({ posts: postData.post })
+      })
+
+    retroAPI.all()
+      .then(classrooms => {
+        this.setState({classrooms})
+      })
+  }
+
+  handleClassRoomSubmission = (classroom) => {
+    // console.log(title,yearReleased);
+    //give it the previous state and then mutate it
+    this.setState(( {classrooms}) => (
+      { classrooms: [ classroom].concat(classrooms) }
+    ));
+
+  retroAPI.save(classroom);
+  }
+
+  handlePostSubmission = (post) => {
+    // postsAPI.save(post);
+    this.setState(({ posts }) => (
+      { posts: [post].concat(posts) }
+    ));
+
+    retroAPI.store(post);
+  }
+
+
   render() {
+    const { logs, posts } = this.state;
+    // console.log(logs, posts)
+
     return (
-      <div className="App">
-        <Container-fluid>
-          <Row>
-            <Col>
-              <ListGroup className="logBase">
-                <ListGroupItem active>
-                  <ListGroupItemHeading>Monday 15th January 2018</ListGroupItemHeading>
-                  <ListGroupItemText>
-                    <Card className="postBox">
-                      <CardBody>
-                        <CardTitle className="postTitle">Title of the po  st</CardTitle>
-                        <CardSubtitle className="postSubtitle">Lesson Summary</CardSubtitle>
-                        <CardText className="postContent">
-                        
-                        <Title></Title>
+     <div className="App">
 
-                        </CardText>                        
-                      </CardBody>
-                    </Card>
+     <BrowserRouter>
+      <div>
+        <Header />
+        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route exact path="/dashboard" component={Dashboard}></Route>
+        <Route exact path="/posts/new" render={() => (<PostForm onSubmit={this.handlePostSubmission} /> )} />
+        <Route exact path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
+        <Route exact path='/' component={Landing}></Route>
+     </div>
 
-                  </ListGroupItemText>
-                </ListGroupItem>
+     </BrowserRouter>
 
-                <ListGroupItem>
-
-                <Card className="postBox">
-                      <CardBody>
-                        <CardTitle className="postTitle">Title of the post</CardTitle>
-                        <CardSubtitle className="postSubtitle">Challenge</CardSubtitle>
-                        <CardText className="postContent">The quick brown fox jumped over the lazy dog.</CardText>                                                
-                      </CardBody>
-                    </Card>
-
-                </ListGroupItem>
-
-              </ListGroup>
-            </Col>
-
-            
-          </Row>
-        </Container-fluid>
-      </div>
+    </div>
     );
   }
 }
 
-export default App;
+
+export default connect(null, actions)(App);

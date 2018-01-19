@@ -10,14 +10,8 @@ var Log = mongoose.model('Log', {
     trim: true
 
   },
-  completed: {
-    type: Boolean,
-    default: false
-  },
-  completedAt: {
-    type: Number,
-    default: null
-  },
+  date: Date,
+  
   classroom_id: {type: ObjectId, ref: 'Classroom'}
 });
 

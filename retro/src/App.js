@@ -80,14 +80,13 @@ class App extends Component {
      <BrowserRouter>
       <div>
         <Header />
+        <Route path="/classroom" component={ClassRoomForm} onSubmit={this.handleClassRoomSubmission} />
         <Route path="/logs" component={Dashboard}></Route>
         <Route path='/' component={Landing}></Route>
      </div>
 
      </BrowserRouter>
-        <Logs logs={logs} posts={posts}/>
-        <ClassRoomForm onSubmit={this.handleClassRoomSubmission} />
-        <PostForm onSubmit={this.handlePostSubmission} />
+      
     </div>
     );
   }

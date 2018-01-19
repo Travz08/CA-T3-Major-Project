@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // importing actions
 import * as actions from './actions'
 // importing components
-import Post from './components/post';
+import Post from './components/posts';
 import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
@@ -82,6 +82,7 @@ class App extends Component {
         <Header />
         <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
         <Route exact path="/dashboard" component={Dashboard}></Route>
+        <Route exact path="/posts/new" render={() => (<PostForm onSubmit={this.handlePostSubmission} /> )} />
         <Route exact path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>

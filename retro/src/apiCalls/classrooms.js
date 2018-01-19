@@ -1,9 +1,9 @@
 
-const retrospectPostsAPI =`https://namenotesapi.herokuapp.com/posts`
-
+const retrospectClassAPI =`https://namenotesapi.herokuapp.com/class`
+const saveClass =`https://namenotesapi.herokuapp.com/class/new`
 
 export function all() {
-    return fetch(retrospectPostsAPI)
+    return fetch(retrospectClassAPI)
         .then(res => res.json())
         // .then((data) => {
         //     console.log(data.logs)
@@ -12,13 +12,13 @@ export function all() {
 
 }
 
-export function store(post) {
-  return fetch('https://namenotesapi.herokuapp.com/post/new', {
+export function save(classroom) {
+  return fetch(saveClass, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(post)
+    body: JSON.stringify(classroom)
   })
   .then(res => res.json())
   .catch(error => {console.log(error)})

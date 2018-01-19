@@ -23,9 +23,6 @@ class Header extends Component {
         <Link to={this.props.auth ? '/logs' : '/'}>This is the Header </Link>
         <ul>
           {this.renderContent()}
-          <li>
-        <a href="/auth/google"> Sign in with Google</a>
-          </li>
         </ul>
       </div>
     )

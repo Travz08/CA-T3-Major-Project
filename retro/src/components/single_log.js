@@ -30,7 +30,7 @@ export default function Log({posts, log}) {
 
                         <ListGroupItem>
 
-                            <Post posts={posts} logId={log._id}/>
+                            <Post posts={posts} logId={log._id} />
 
 
                         </ListGroupItem>

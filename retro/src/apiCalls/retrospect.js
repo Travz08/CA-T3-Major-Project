@@ -21,6 +21,20 @@ export function save(classroom) {
   .catch(error => {console.log(error)})
 }
 
+export function store(post) {
+  return fetch('https://namenotesapi.herokuapp.com/post/new', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(post)
+  })
+  .then(res => res.json())
+  .catch(error => {console.log(error)})
+}
+
+
+
 // export function remove(movie) {
 //   return fetch('/delete', {
 //     method: 'POS',

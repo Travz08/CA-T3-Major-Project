@@ -10,7 +10,7 @@ import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
 import Classroom from './components/classroom';
-
+import PostForm from './components/postform';
 
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
@@ -57,9 +57,18 @@ class App extends Component {
       { classrooms: [ classroom].concat(classrooms) }
     ));
 
-
   retroAPI.save(classroom);
   }
+
+  handlePostSubmission = (post) => {
+    // postsAPI.save(post);
+    this.setState(({ posts }) => (
+      { posts: [post].concat(posts) }
+    ));
+
+    retroAPI.store(post);
+  }
+
 
   render() {
     const { logs, posts } = this.state;
@@ -71,7 +80,6 @@ class App extends Component {
      <BrowserRouter>
       <div>
         <Header />
-        <Route exact path="/classroom" component={Classroom}></Route>
         <Route path="/logs" component={Dashboard}></Route>
         <Route path='/' component={Landing}></Route>
      </div>
@@ -79,7 +87,7 @@ class App extends Component {
      </BrowserRouter>
         <Logs logs={logs} posts={posts}/>
         <ClassRoomForm onSubmit={this.handleClassRoomSubmission} />
-
+        <PostForm onSubmit={this.handlePostSubmission} />
     </div>
     );
   }

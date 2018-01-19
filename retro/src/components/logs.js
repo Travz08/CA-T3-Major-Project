@@ -8,12 +8,12 @@ export default function Logs({ logs, posts }) {
   }
 
   const logsItems = logs.map((log) => {
-    return <SingleLog posts={posts} log={log} />
+    return <SingleLog posts={posts} log={log} key={log.id} />
   });
 
 
   return (
-      <ul className="col-md-12 list-group">
+      <ul className="col-md-12 list-group" key={logs.id}  >
         {logsItems}
       </ul>
     )

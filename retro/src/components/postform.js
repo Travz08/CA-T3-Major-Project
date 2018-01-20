@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class PostForm extends Component {
@@ -8,6 +9,7 @@ class PostForm extends Component {
     console.log(this.state.logId)
 
   }
+
 
 
   handleFormSubmission(event) {
@@ -22,7 +24,9 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    this.state.submit({type, title, content, log_id});
+    const user_id = this.props.auth.id
+    this.state.submit({type, title, content, log_id, user_id});
+    console.log(this.state.submit)
   }
 
   render(){
@@ -50,4 +54,10 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
+
+
+export default connect(mapStateToProps)(PostForm)

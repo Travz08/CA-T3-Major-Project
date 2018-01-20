@@ -2,13 +2,33 @@ import React, { Component } from 'react';
 
 
 class PostForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {logId: this.props.match.params.logId, submit: this.props.onSubmit}
+    console.log(this.state.logId)
+
+  }
+
+
+  handleFormSubmission(event) {
+
+    //this preventDefault tells the DOM
+    // when you click on a button on a form or div that click propogates up each element has a default action
+    // prevent default prevents the default action of the element
+    // event.stopPropagation - prevents the event from going up the chain
+    event.preventDefault();
+    const {elements} = event.target;
+    const type = elements["type"].value;
+    const title = elements["title"].value;
+    const content = elements["content"].value;
+    const log_id = this.state.logId;
+    this.state.submit({type, title, content, log_id});
+  }
 
   render(){
-
-
   return (
     <div className="container row">
-      <form className="col s12" onSubmit={this.handlePostSubmission}>
+      <form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
       <div className="row">
         <div className="input-field col s6">
           <input id="type" type="text" className="validate" name="type"/>

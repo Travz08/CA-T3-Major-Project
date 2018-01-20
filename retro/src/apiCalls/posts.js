@@ -1,5 +1,6 @@
 
 const retrospectPostsAPI =`https://namenotesapi.herokuapp.com/posts`
+const savePostAPI =`https://namenotesapi.herokuapp.com/post/new`
 
 
 export function all() {
@@ -13,7 +14,7 @@ export function all() {
 }
 
 export function store(post) {
-  return fetch('https://namenotesapi.herokuapp.com/post/new', {
+  return fetch(savePostAPI, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

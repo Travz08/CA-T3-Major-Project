@@ -74,15 +74,22 @@ class App extends Component {
   render() {
     const { logs, posts, classrooms } = this.state;
     // console.log(logs, posts)
+    const MyPostForm = (props) => {
+      return (
+        <PostForm
+          {...props} onSubmit={this.handlePostSubmission}
+        />
+      );
+    }
 
     return (
      <div className="App">
      <BrowserRouter>
       <div>
         <Header />
+        <Route path="/post/:logId" component={MyPostForm} />
         <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
-        <Route path="/posts/new" render={() => (<PostForm onSubmit={this.handlePostSubmission} /> )} />
         <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>

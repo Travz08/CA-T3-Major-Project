@@ -90,7 +90,7 @@ app.get('/class', (req, res) => {
 })
 // posting the class
 app.post('/class/new', (req, res) => {
-  // creating a new instance of the mongoose model Todo
+  // creating a new instance of the mongoose model class
   var studyClass = new ClassRoom ({
     class_name: req.body.class_name,
     date_started: req.body.date_started,

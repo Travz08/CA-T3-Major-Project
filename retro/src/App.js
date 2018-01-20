@@ -80,16 +80,18 @@ class App extends Component {
      <BrowserRouter>
       <div>
         <Header />
-        <Route path="/classroom" component={ClassRoomForm} onSubmit={this.handleClassRoomSubmission} />
-        <Route path="/logs" component={Dashboard}></Route>
-        <Route path='/' component={Landing}></Route>
+        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route exact path="/dashboard" component={Dashboard}></Route>
+        <Route exact path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
+        <Route exact path='/' component={Landing}></Route>
      </div>
 
      </BrowserRouter>
-      
+
     </div>
     );
   }
 }
+
 
 export default connect(null, actions)(App);

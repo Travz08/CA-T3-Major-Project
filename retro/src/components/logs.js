@@ -15,7 +15,7 @@ export default function Logs({ logs, posts }) {
 
 
   return (
-      <div className="col-md-12 list-group" key={logs.id}  >
+      <div className="list-group" key={logs.id}  >
         <Container-fluid>
             <Row>
                 {logsItems}

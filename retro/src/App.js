@@ -94,7 +94,6 @@ class App extends Component {
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>
-     <Logs logs={logs} posts={posts}/>
     </div>
     );
   }

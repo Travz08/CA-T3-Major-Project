@@ -1,5 +1,7 @@
 import React from 'react';
 import SingleLog from './single_log';
+import { Row } from 'reactstrap';
+
 
 export default function Logs({ logs, posts }) {
 
@@ -13,8 +15,12 @@ export default function Logs({ logs, posts }) {
 
 
   return (
-      <ul className="col-md-12 list-group" key={logs.id}  >
-        {logsItems}
-      </ul>
+      <div className="col-md-12 list-group" key={logs.id}  >
+        <Container-fluid>
+            <Row>
+                {logsItems}
+            </Row>
+        </Container-fluid>
+      </div>
     )
 }

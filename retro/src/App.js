@@ -87,7 +87,7 @@ class App extends Component {
      </div>
 
      </BrowserRouter>
-
+     <Logs logs={logs} posts={posts}/>
     </div>
     );
   }

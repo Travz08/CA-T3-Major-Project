@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './posts'
 
-import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import { Col, ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
 
 
 export default function Log({posts, log}) {
@@ -9,36 +9,19 @@ export default function Log({posts, log}) {
 
     // console.log(log.text)
     return (
+                    <Col className="col-md-2">
+                        <ListGroup className="logBase">
+                            <ListGroupItem active>
+                                <ListGroupItemHeading>{log.text} 15th Jan 2018</ListGroupItemHeading>
+                            </ListGroupItem>
 
-        <div>
+                            <ListGroupItem>
 
-            <span>
-                Classroom ID: {log.classroom_id}
-            </span>
-            <br/>
-
-            <Container-fluid>
-                <Row>
-                    <Col>
-                    <ListGroup className="logBase">
-                        <ListGroupItem active>
-                            <ListGroupItemHeading>{log.text} 15th Jan 2018 ID: {log._id}</ListGroupItemHeading>
-                        </ListGroupItem>
-
-                        <ListGroupItem>
-
-                            <Post posts={posts} logId={log._id} />
+                                <Post posts={posts} logId={log._id} />
 
 
-                        </ListGroupItem>
-
-                    </ListGroup>
+                            </ListGroupItem>
+                        </ListGroup>
                     </Col>
-
-
-                </Row>
-            </Container-fluid>
-        </div>
-
     )
 }

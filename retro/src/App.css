@@ -4,8 +4,20 @@
   background-color: blueviolet
 }
 
+container-fluid {
+  overflow-x: scroll;
+}
+
+.row {
+  display: -webkit-inline-box;
+  white-space: nowrap;
+
+}
+
 .postBox {
   margin: 5px;
+  white-space: normal;
+  
 }
 
 .postTitle {

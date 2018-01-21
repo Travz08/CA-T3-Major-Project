@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 import SinglePost from './single_post'
 
 export default function Post({ logId, posts }) {
@@ -19,8 +18,8 @@ export default function Post({ logId, posts }) {
     });
 
     return (
-        <ul className="col-md-12 ke={post.id} list-group">
+        <div>
           {postsContent}
-        </ul>
+        </div>
     )
 }

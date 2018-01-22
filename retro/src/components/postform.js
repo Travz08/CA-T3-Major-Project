@@ -13,6 +13,7 @@ class PostForm extends Component {
 
   }
 
+
   //modal code
 
   toggle() {

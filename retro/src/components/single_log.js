@@ -3,6 +3,7 @@ import Post from './posts';
 import PostForm from './postform';
 import * as logsAPI from '../apiCalls/logs'
 import * as postsAPI from '../apiCalls/posts'
+import { connect } from 'react-redux';
 
 
 import { Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Button, Modal, ModalHeader, ModalBody, ModalFooter      } from 'reactstrap';
@@ -13,7 +14,9 @@ class Log extends Component {
       constructor(props) {
             super(props);
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
-
+            console.log(this.props)
+            console.log(this.state.classId)
+            console.log(this.props.auth.last_name)
             this.toggle = this.toggle.bind(this);
 
         }
@@ -73,6 +76,9 @@ class Log extends Component {
 }
 
 
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
 
-
-export default Log
+export default connect(mapStateToProps)(Log)

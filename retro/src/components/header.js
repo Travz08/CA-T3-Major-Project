@@ -42,7 +42,7 @@ class Header extends Component {
     }
   }
 
-  renderLogs() {
+  renderClassrooms() {
     // auth can only be one of three values, why we use a switch statement.
     switch (this.props.auth) {
       case null:
@@ -50,7 +50,7 @@ class Header extends Component {
       case false:
         return null
       default:
-        return <NavLink href="/logs">Logs</NavLink>
+        return <NavLink href="/classroom">Classrooms</NavLink>
     }
   }
 
@@ -63,25 +63,13 @@ class Header extends Component {
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>
            <Nav className="ml-auto" navbar>
-             <NavItem>
-              {this.renderLogs()}
-             </NavItem>
-             <NavItem>
-              <NavLink href="/classroom">Classrooms</NavLink>
-             </NavItem>
              <UncontrolledDropdown nav inNavbar>
                <DropdownToggle nav caret>
                  Options
                </DropdownToggle>
                <DropdownMenu >
                  <DropdownItem>
-                   Travz is cool
-                 </DropdownItem>
-                 <DropdownItem>
-                   Terry is cool
-                 </DropdownItem>
-                 <DropdownItem>
-                    Syaf is sorta cool
+                   {this.renderClassrooms()}
                  </DropdownItem>
                  <DropdownItem divider />
                  <DropdownItem>

@@ -8,15 +8,11 @@ import * as postsAPI from '../apiCalls/posts'
 import { Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Button, Modal, ModalHeader, ModalBody, ModalFooter      } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-// export default function Log({posts, log}) {
-
 class Log extends Component {
 
       constructor(props) {
             super(props);
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
-            console.log(this.props)
-            console.log(this.state.classId)
 
             this.toggle = this.toggle.bind(this);
 
@@ -38,7 +34,7 @@ class Log extends Component {
 
             return (
 
-                    <Col className="col-md-3">
+                    <Col className="col-md-3" style={{minHeight:"100vh"}}>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
                             <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}

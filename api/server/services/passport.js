@@ -50,7 +50,8 @@ passport.use(new GoogleStrategy({
           googleId: profile.id,
            profileName: profile.displayName,
             first_name: profile.name.givenName,
-             last_name: profile.name.familyName
+             last_name: profile.name.familyName,
+             image: profile._json.image.url
            })
            .save()
            .then(user => done(null, user));

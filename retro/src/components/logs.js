@@ -8,7 +8,7 @@ export default class Logs extends Component {
     super(props);
     console.log(props)
     this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
-
+  
   }
 
 

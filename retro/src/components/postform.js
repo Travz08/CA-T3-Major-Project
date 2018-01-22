@@ -6,12 +6,13 @@ import { Button, Modal, ModalFooter, Form, FormGroup, Label, Input, FormText } f
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false}
+    this.state = { logId: this.props.logs, submit: this.props.onSubmit, modal: false}
     console.log(this.state.submit)
-
+    console.log(this.props.auth)
     this.toggle = this.toggle.bind(this);
 
   }
+
 
   //modal code
 
@@ -33,7 +34,7 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    const user_id = this.props.auth.id;
+    const user_id = this.props.auth._id
     this.state.submit({type, title, content, log_id, user_id});
   }
 

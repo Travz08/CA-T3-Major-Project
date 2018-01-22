@@ -90,7 +90,7 @@ class App extends Component {
         <Route path="/post/:logId" component={MyPostForm} />
         <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
-        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
+        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>

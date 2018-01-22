@@ -8,40 +8,43 @@ export default class Logs extends Component {
     super(props);
     console.log(props)
     this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
+
   }
 
-<<<<<<< HEAD
-=======
-  if (!posts) {
-    return <div> Loading posts.. </div>
-  }
-
-  const logsItems = logs.map((log) => {
-    return <SingleLog posts={posts} log={log} key={log.id} onSubmit={onSubmit} />
-  });
->>>>>>> dev
 
 
 render() {
+  if (!this.state.posts) {
+    return (
+      <div>
+        Loading Everything!..
+      </div>
+    )
+  }
+
+  if (!this.state.log) {
+    return (
+      <div>
+        Loading Logs!..
+      </div>
+    )
+  }
 
   const logsItems = () => {
     return this.state.log.map((log) => {
     return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
   });
+
 }
 
   return (
-      <div className="list-group">
-      <div>
-      {
-        !!this.state.log ? (
-          <div>{logsItems()}</div>
-        ) : (
-          <div>"Loading..."</div>
-        )
-      }
-      </div>
-    </div>
+    <div className="list-group" key={this.state.log.id}  >
+       <Container-fluid>
+           <Row>
+               {logsItems()}
+           </Row>
+       </Container-fluid>
+     </div>
     )
   }
 }

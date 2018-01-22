@@ -33,9 +33,8 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    const user_id = this.props.auth.id
+    const user_id = this.props.auth.id;
     this.state.submit({type, title, content, log_id, user_id});
-    console.log(this.state.submit)
   }
 
   render(){
@@ -64,18 +63,13 @@ class PostForm extends Component {
 
             <div className="row">
               posting to log id: {this.state.logId}<br/>
-{/* 
-                <input id="type" type="text" className="validate" name="type"/>
-                <label htmlFor="type" >Type &nbsp;</label> */}
-
-
             </div>
 
               <ModalFooter>
-                <Button color="primary" type="submit" onClick={this.toggle}>Submit</Button> 
+                <Button color="primary" type="submit" onClick={this.toggle}>Submit</Button>
               </ModalFooter>
-            </Form>          
- 
+            </Form>
+
 
   )
   }

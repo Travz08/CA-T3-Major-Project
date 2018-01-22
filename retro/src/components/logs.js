@@ -9,6 +9,10 @@ export default function Logs({ logs, posts, onSubmit }) {
     return <div> Loading Logs.. </div>
   }
 
+  if (!posts) {
+    return <div> Loading posts.. </div>
+  }
+
   const logsItems = logs.map((log) => {
     return <SingleLog posts={posts} log={log} key={log.id} onSubmit={onSubmit} />
   });

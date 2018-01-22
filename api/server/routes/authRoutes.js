@@ -14,7 +14,7 @@ module.exports = (app) => {
   // difference to route above is that this url will have the code from google.
   // passport, GoogleStrategy will see that and say we will use the code and turn it into a profile.
   app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-    res.redirect('/logs')
+    res.redirect('/classroom')
   })
 
   app.get('/api/logout', (req, res) => {

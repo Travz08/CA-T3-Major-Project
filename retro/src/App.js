@@ -74,8 +74,14 @@ class App extends Component {
 
   render() {
     const { logs, posts, classrooms } = this.state;
-    // console.log(logs, posts)
-
+    
+  const MyPostForm = (props) => {
+    return (
+      <PostForm
+        {...props} onSubmit={this.handlePostSubmission}
+      />
+    );
+  }
 
     const LogClassroom = (props) => {
       return (

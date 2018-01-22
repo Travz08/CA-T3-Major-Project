@@ -10,17 +10,6 @@ export default class Logs extends Component {
     this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
   }
 
-<<<<<<< HEAD
-=======
-  if (!posts) {
-    return <div> Loading posts.. </div>
-  }
-
-  const logsItems = logs.map((log) => {
-    return <SingleLog posts={posts} log={log} key={log.id} onSubmit={onSubmit} />
-  });
->>>>>>> dev
-
 
 render() {
 
@@ -32,15 +21,20 @@ render() {
 
   return (
       <div className="list-group">
-      <div>
-      {
-        !!this.state.log ? (
-          <div>{logsItems()}</div>
-        ) : (
-          <div>"Loading..."</div>
-        )
-      }
-      </div>
+      <Container-fluid>
+         <Row>
+         <div>
+         {
+           !!this.state.log ? (
+             <div>{logsItems()}</div>
+           ) : (
+             <div>"Loading..."</div>
+           )
+         }
+         </div>
+         </Row>
+     </Container-fluid>
+
     </div>
     )
   }

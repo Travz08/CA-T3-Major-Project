@@ -15,7 +15,8 @@ class Log extends Component {
       constructor(props) {
             super(props);
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
-            console.log(this.state.log)
+            console.log(this.props)
+            console.log(this.state.classId)
 
             this.toggle = this.toggle.bind(this);
 
@@ -37,7 +38,7 @@ class Log extends Component {
 
             return (
 
-                    <Col className="col-md-1">
+                    <Col className="col-md-12">
 
 
                     <ListGroup className="logBase">

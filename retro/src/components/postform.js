@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class PostForm extends Component {
@@ -40,33 +40,37 @@ class PostForm extends Component {
   render(){
   return (
 
-    <div className="container row">
+            <Form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
 
-            <form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
+              <FormGroup>
+                <Label for="title">Title</Label>
+                <Input id="title" type="text" className="validate" name="title"/>
+              </FormGroup>
+
+              <FormGroup>
+                <Label for="type">Type</Label>
+                <Input id="type" type="select" className="validate" name="type">
+                  <option>Summary</option>
+                  <option>Challenge</option>
+                  <option>Resource</option>
+                </Input>
+              </FormGroup>
+
+              <FormGroup>
+                <Label for="content">Content</Label>
+                <Input id="content" type="textarea" className="validate" name="content"/>
+              </FormGroup>
+
             <div className="row">
-              <div className="input-field">
               posting to log id: {this.state.logId}<br/>
-
-                <input id="type" type="text" className="validate" name="type"/>
-                <label htmlFor="type" >Type &nbsp;</label>
-              </div>
-              <div className="input-field">
-                <input id="title" type="text" className="validate" name="title"/>
-                <label htmlFor="title" >Title &nbsp;</label>
-              </div>
-              <div className="input-field col s6">
-                <input id="content" type="text" className="validate" name="content"/>
-                <label htmlFor="content" >Content &nbsp;</label>
-              </div>
             </div>
-              <button className="waves-effect waves-light btn" >Create Post</button>
+
               <ModalFooter>
-                                    <Button color="primary" type="submit">save</Button>{' '}
-                                    </ModalFooter>
-            </form>
+                <Button color="primary" type="submit" onClick={this.toggle}>Submit</Button>
+              </ModalFooter>
+            </Form>
 
 
-    </div>
   )
   }
 }

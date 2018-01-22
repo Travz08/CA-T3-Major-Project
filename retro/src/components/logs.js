@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SingleLog from './single_log';
 import { Row } from 'reactstrap';
 
 
-export default function Logs({ logs, posts, onSubmit }) {
+export default class Logs extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+    this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit}
+  }
 
-  if (!logs) {
+  logsItems() {this.state.log.map((log) => {
+    return <SingleLog posts={this.state.posts} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
+  });
+}
+
+render() {
+
+  if (!this.state.log) {
     return <div> Loading Logs.. </div>
   }
 
-  const logsItems = logs.map((log) => {
-    return <SingleLog posts={posts} log={log} key={log.id} onSubmit={onSubmit} />
-  });
+  if (!this.state.posts) {
+    return <div> Loading Posts.. </div>
+  }
 
 
   return (
-      <div className="list-group" key={logs.id}  >
+      <div className="list-group" key={this.log.id}  >
         <Container-fluid>
             <Row>
-                {logsItems}
+                {this.logsItems()}
             </Row>
         </Container-fluid>
       </div>
     )
+  }
 }

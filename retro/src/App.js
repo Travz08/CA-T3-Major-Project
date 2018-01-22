@@ -10,6 +10,7 @@ import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
 import Classroom from './components/classroom';
 import PostForm from './components/postform';
+import ShowLogs from './components/showlogs'
 
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
@@ -82,13 +83,20 @@ class App extends Component {
       );
     }
 
+    const LogClassroom = (props) => {
+      return (
+      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} {...props} />
+      );
+    }
+
     return (
      <div className="App">
      <BrowserRouter>
       <div>
         <Header />
         <Route path="/post/:logId" component={MyPostForm} />
-        <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route exact path ="/classroom/:id" component={LogClassroom} />
+        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} classrooms={classrooms} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
         <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} />)} />
         <Route exact path='/' component={Landing}></Route>

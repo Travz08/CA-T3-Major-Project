@@ -81,14 +81,20 @@ class App extends Component {
     // console.log(logs, posts)
 
 
+    const LogClassroom = (props) => {
+      return (
+      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} {...props} />
+      );
+    }
+
     return (
      <div className="App">
      <BrowserRouter>
       <div>
         <Header />
-        <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route exact path ="/classroom/:id" component={LogClassroom} />
+        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} classrooms={classrooms} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
-        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>

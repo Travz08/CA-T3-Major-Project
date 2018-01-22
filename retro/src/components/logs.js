@@ -10,6 +10,16 @@ export default class Logs extends Component {
     this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
   }
 
+<<<<<<< HEAD
+=======
+  if (!posts) {
+    return <div> Loading posts.. </div>
+  }
+
+  const logsItems = logs.map((log) => {
+    return <SingleLog posts={posts} log={log} key={log.id} onSubmit={onSubmit} />
+  });
+>>>>>>> dev
 
 
 render() {

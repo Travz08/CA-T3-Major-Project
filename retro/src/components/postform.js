@@ -6,12 +6,13 @@ import { Button, Modal, ModalFooter, Form, FormGroup, Label, Input, FormText } f
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false}
+    this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false, isAlreadySubmitted: false}
     console.log(this.state.submit)
-
+    console.log(this.props.auth)
     this.toggle = this.toggle.bind(this);
 
   }
+
 
   //modal code
 
@@ -33,8 +34,9 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    const user_id = this.props.auth.id;
+    const user_id = this.props.auth._id;
     this.state.submit({type, title, content, log_id, user_id});
+    this.setState({isAlreadySubmitted: true})
   }
 
   render(){
@@ -43,12 +45,12 @@ class PostForm extends Component {
             <Form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
 
               <FormGroup>
-                <Label for="title">Title</Label>
+                <Label htmlFor="title">Title</Label>
                 <Input id="title" type="text" className="validate" name="title"/>
               </FormGroup>
 
               <FormGroup>
-                <Label for="type">Type</Label>
+                <Label htmlFor="type">Type</Label>
                 <Input id="type" type="select" className="validate" name="type">
                   <option>Summary</option>
                   <option>Challenge</option>
@@ -57,7 +59,7 @@ class PostForm extends Component {
               </FormGroup>
 
               <FormGroup>
-                <Label for="content">Content</Label>
+                <Label htmlFor="content">Content</Label>
                 <Input id="content" type="textarea" className="validate" name="content"/>
               </FormGroup>
 

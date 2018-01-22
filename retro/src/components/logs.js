@@ -1,50 +1,83 @@
 import React, { Component } from 'react';
 import Log from './single_log';
-import { Row } from 'reactstrap';
-
+import { Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Button, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
+import LogForm from './logform'
 
 export default class Logs extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
-    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
+    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit }
+    // console.log(this.state.logSubmit)
 
+    this.toggle = this.toggle.bind(this);
   }
 
+  toggle() {
+      this.setState({
+        modal: !this.state.modal
+      });
+    }
 
 
-render() {
-  if (!this.state.posts) {
+  render() {
+    if (!this.state.posts) {
+      return (
+        <div>
+          Loading Everything!..
+        </div>
+      )
+    }
+
+    if (!this.state.log) {
+      return (
+        <div className="list-group">
+          <Container-fluid>
+              <Row>
+                  {logFormRender()}
+              </Row>
+          </Container-fluid>
+        </div>
+      )
+    }
+
+    const logFormRender = () => {
     return (
-      <div>
-        Loading Everything!..
-      </div>
+      <Col className="col-md-3">
+      <ListGroup className="logBase">
+          <ListGroupItem active>
+              <ListGroupItemHeading>
+              <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+              <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>
+                  New Log
+              </ModalHeader>
+                  <ModalBody>
+                      posting to log id: {this.state.log._id}<br/>
+                      <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
+                  </ModalBody>
+              </Modal>
+              </ListGroupItemHeading>
+          </ListGroupItem>
+      </ListGroup>
+      </Col>
     )
   }
 
-  if (!this.state.log) {
+    const logsItems = () => {
+      return this.state.log.map((log) => {
+      return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
+    });
+  }
+
     return (
-      <div>
-        Loading Logs!..
-      </div>
-    )
+      <div className="list-group" key={this.state.log.id}  >
+         <Container-fluid>
+            <Row>
+              {logsItems()}
+              {logFormRender()}
+            </Row>
+         </Container-fluid>
+       </div>
+      )
+    }
   }
-
-  const logsItems = () => {
-    return this.state.log.map((log) => {
-    return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
-  });
-
-}
-
-  return (
-    <div className="list-group" key={this.state.log.id}  >
-       <Container-fluid>
-           <Row>
-               {logsItems()}
-           </Row>
-       </Container-fluid>
-     </div>
-    )
-  }
-}

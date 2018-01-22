@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 // redux import
 import { connect } from 'react-redux';
 // importing actions
@@ -9,8 +9,6 @@ import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
 import Classroom from './components/classroom';
-import PostForm from './components/postform';
-import ShowLogs from './components/showlogs'
 
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
@@ -67,8 +65,15 @@ class App extends Component {
   classAPI.save(classroom);
   }
 
+  handleLogSubmission = (log) => {
+    this.setState(({ logs }) => (
+      { logs: [log].concat(logs) }
+    ));
+
+    logsAPI.store(log);
+  }
+
   handlePostSubmission = (post) => {
-    // postsAPI.save(post);
     this.setState(({ posts }) => (
       { posts: [post].concat(posts) }
     ));
@@ -84,7 +89,7 @@ class App extends Component {
 
     const LogClassroom = (props) => {
       return (
-      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} {...props} />
+      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} onLogSubmit={this.handleLogSubmission} {...props} />
       );
     }
 

@@ -10,7 +10,9 @@ const PostSchema = mongoose.Schema({
   title: String,
   content: String,
   log_id: {type: ObjectId, ref: 'Log'},
-  user_id: {type: ObjectId, ref: 'User'}
+  user_id: {type: ObjectId, ref: 'User'},
+  profileName: String,
+  image_url: String
 }
 )
 

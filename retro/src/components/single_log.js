@@ -8,26 +8,22 @@ export default function Log({posts, log}) {
     // console.log(log.text)
 
     return (
-      <div>
-        <span>
-            Classroom ID: {log.classroom_id}
-        </span>
-        <br/>
-        <Container-fluid>
-          <Row>
-            <Col>
+
+            <Col className="col-md-1">
               <ListGroup className="logBase">
                 <ListGroupItem active>
-                  <ListGroupItemHeading>{log.text} {log.date} ID: {log._id}</ListGroupItemHeading>
-                  <Link to={`/post/${log._id}`} >{log._id}</Link>
+                    <ListGroupItemHeading>{log.text} {log.date}  <br/>          
+                        <span>
+                            Classroom ID: {log.classroom_id}
+                        </span>
+                    </ListGroupItemHeading>
+                    <Link to={`/post/${log._id}`} >{log._id}</Link>
                 </ListGroupItem>
                 <ListGroupItem>
                   <Post posts={posts} logId={log._id} />
                 </ListGroupItem>
               </ListGroup>
             </Col>
-          </Row>
-        </Container-fluid>
-      </div>
+
     )
 }

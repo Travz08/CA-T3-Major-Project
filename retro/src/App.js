@@ -27,8 +27,13 @@ import * as classAPI from './apiCalls/classrooms';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { logs: null, posts: null}
+    console.log(props)
+  }
 
-  state = { logs: null, posts: null}
+
 
 
   componentDidMount() {
@@ -55,7 +60,7 @@ class App extends Component {
     // console.log(title,yearReleased);
     //give it the previous state and then mutate it
     this.setState(( {classrooms}) => (
-      { classrooms: [ classroom].concat(classrooms) }
+      { classrooms: [classroom].concat(classrooms) }
     ));
 
 
@@ -88,11 +93,9 @@ class App extends Component {
      <BrowserRouter>
       <div>
         <Header />
-        <Route path="/post/:logId" component={MyPostForm} />
         <Route exact path ="/classroom/:id" component={LogClassroom} />
         <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} classrooms={classrooms} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
-        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>
@@ -101,5 +104,9 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
 
 export default connect(null, actions)(App);

@@ -37,10 +37,7 @@ class Log extends Component {
             }
 
             return (
-
-                    <Col className="col-md-12">
-
-
+                    <Col className="col-md-3">
                     <ListGroup className="logBase">
                         <ListGroupItem active>
                             <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}
@@ -62,7 +59,6 @@ class Log extends Component {
                                         Classroom ID: {this.state.log.classroom_id}
                                     </span>
                             </ListGroupItemHeading>
-                            <Link to={`/post/${this.state.log._id}`} >{this.state.log._id}</Link>
                         </ListGroupItem>
                         <ListGroupItem>
                         <Post posts={this.state.posts} logId={this.state.log._id} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export default function ClassRoom({ classrooms }) {
 
@@ -8,9 +9,13 @@ export default function ClassRoom({ classrooms }) {
 
   const classItems = classrooms.map((classroom) => {
     return (
-      <div>{classroom.class_name}</div>
+      <Link to={`/classroom/${classroom._id}`}>
+            <div>{classroom.class_name}</div>
+      </Link>
     )
   });
+
+
 
 
   return (

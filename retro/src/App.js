@@ -10,6 +10,7 @@ import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
 import Classroom from './components/classroom';
 import PostForm from './components/postform';
+import ShowLogs from './components/showlogs'
 
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';

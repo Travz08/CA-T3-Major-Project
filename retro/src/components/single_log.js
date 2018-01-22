@@ -37,7 +37,6 @@ class Log extends Component {
             }
 
             return (
-
                     <Col className="col-md-3">
                     <ListGroup className="logBase">
                         <ListGroupItem active>

@@ -8,6 +8,7 @@ export default class Logs extends Component {
     super(props);
     console.log(props)
     this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit}
+
   }
 
 
@@ -33,6 +34,7 @@ render() {
     return this.state.log.map((log) => {
     return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
   });
+
 }
 
   return (

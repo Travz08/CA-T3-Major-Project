@@ -9,11 +9,11 @@ const SinglePost = ({ logId, post }) => {
     if (post.log_id == logId) {
       return  (
         <Card className="postBox">
-        <CardBody>
-            <CardTitle className="postTitle">{post.title}</CardTitle>
-            <CardSubtitle className="postSubtitle">{post.type} LOGID:{post.log_id}</CardSubtitle>
-            <CardText className="postContent">{post.content}</CardText>
-        </CardBody>
+          <CardBody>
+              <CardTitle className="postTitle">{post.title}</CardTitle>
+              <CardSubtitle className="postSubtitle">{post.type} </CardSubtitle>
+              <CardText className="postContent">{post.content}</CardText>
+          </CardBody>
         </Card>
       );
     } else {

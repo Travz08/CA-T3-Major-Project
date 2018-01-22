@@ -18,8 +18,8 @@ export default function Post({ logId, posts }) {
     });
 
     return (
-        <ul className="col-md-12 list-group">
+        <div>
           {postsContent}
-        </ul>
+        </div>
     )
 }

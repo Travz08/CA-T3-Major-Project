@@ -32,22 +32,33 @@ passport.use(new GoogleStrategy({
   callbackURL: '/auth/google/callback',
   proxy: true
 },
-async (accessToken, refreshToken, profile, done) => {
+(accessToken, refreshToken, profile, done) => {
+    console.log('Access Token', accessToken)
+    console.log('Refresh Token', refreshToken)
+    console.log('Profile', profile)
 
-// Asynchronus method so it returns a promise. // refactored using ES2017 - Es6 version is down below.
-const existingUser = await User.findOne({ googleId: profile.id });
-
+// Asynchronus method so it returns a promise.
+    User.findOne({ googleId: profile.id }).then((existingUser => {
       if (existingUser) {
         // we have user with an id in our database.
         done(null, existingUser);
       } else {
-        // creating a new user. 
-        const user = await new User({ googleId: profile.id, profileName: profile.displayName, first_name: profile.name.givenName, last_name: profile.name.familyName}).save();
-
-        done(null, user);
+        // we will create a user into our database.
+        // remember calling new User - creates a mongoose model instance.
+        // A model instance represents a single record inside of the collection.
+        new User({
+          googleId: profile.id,
+           profileName: profile.displayName,
+            first_name: profile.name.givenName,
+             last_name: profile.name.familyName
+           })
+           .save()
+           .then(user => done(null, user));
       }
-    }
-  )
+    }))
+
+
+  })
 );
 
 

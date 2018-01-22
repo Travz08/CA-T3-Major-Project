@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import Linkify from 'react-linkify';
 
 const SinglePost = ({ logId, post }) => {
-  // const video = props.video;
   // console.log('from single posts component', logId)
 
 
@@ -10,9 +10,11 @@ const SinglePost = ({ logId, post }) => {
       return  (
         <Card className="postBox">
           <CardBody>
-              <CardTitle className="postTitle">{post.title}</CardTitle>
-              <CardSubtitle className="postSubtitle">{post.type} </CardSubtitle>
-              <CardText className="postContent">{post.content}</CardText>
+            <CardTitle className="postTitle">{post.title}</CardTitle>
+            <CardSubtitle className="postSubtitle">{post.type}</CardSubtitle>
+            <Linkify>
+            <CardText className="postContent">{post.content}</CardText>
+            </Linkify>
           </CardBody>
         </Card>
       );

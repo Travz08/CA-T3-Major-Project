@@ -59,7 +59,7 @@ class App extends Component {
     // console.log(title,yearReleased);
     //give it the previous state and then mutate it
     this.setState(( {classrooms}) => (
-      { classrooms: [ classroom].concat(classrooms) }
+      { classrooms: [classroom].concat(classrooms) }
     ));
 
 

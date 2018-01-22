@@ -33,9 +33,8 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    const user_id = this.props.auth.id
+    const user_id = this.props.auth.id;
     this.state.submit({type, title, content, log_id, user_id});
-    console.log(this.state.submit)
   }
 
   render(){
@@ -64,8 +63,8 @@ class PostForm extends Component {
               <ModalFooter>
                                     <Button color="primary" type="submit">save</Button>{' '}
                                     </ModalFooter>
-            </form>          
- 
+            </form>
+
 
     </div>
   )

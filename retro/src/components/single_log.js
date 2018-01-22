@@ -35,14 +35,16 @@ class Log extends Component {
       }
 
     render() {
+          
+
             return (
 
                     <Col className="col-md-1">
 
-                    
+
                     <ListGroup className="logBase">
                         <ListGroupItem active>
-                            <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}  
+                            <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}
                                 <br/>
                                 <Button color="success" onClick={this.toggle}>{this.props.buttonLabel}NEW POST </Button>
                                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -53,14 +55,13 @@ class Log extends Component {
                                         posting to log id: {this.state.log._id}<br/>
                                         <PostForm logs={this.state.log._id} onSubmit={this.state.submit} />
                                     </ModalBody>
-                
-                                </Modal>   
-                                <br/>          
+
+                                </Modal>
+                                <br/>
                                     <span>
                                         Classroom ID: {this.state.log.classroom_id}
                                     </span>
                             </ListGroupItemHeading>
-                            <Link to={`/post/${this.state.log._id}`} >{this.state.log._id}</Link>
                         </ListGroupItem>
                         <ListGroupItem>
                         <Post posts={this.state.posts} logId={this.state.log._id} />

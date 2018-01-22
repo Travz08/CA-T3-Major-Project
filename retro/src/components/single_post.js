@@ -22,7 +22,7 @@ const SinglePost = ({ logId, post }) => {
       )
     }
 
-    
+
 
 
 

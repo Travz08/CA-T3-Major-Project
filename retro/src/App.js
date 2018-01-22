@@ -26,8 +26,13 @@ import * as classAPI from './apiCalls/classrooms';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { logs: null, posts: null}
+    console.log(props)
+  }
 
-  state = { logs: null, posts: null}
+
 
 
   componentDidMount() {
@@ -73,7 +78,7 @@ class App extends Component {
 
   render() {
     const { logs, posts, classrooms } = this.state;
-    // console.log(logs, posts)
+
     const MyPostForm = (props) => {
       return (
         <PostForm
@@ -94,11 +99,14 @@ class App extends Component {
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>
-     <Logs logs={logs} posts={posts}/>
     </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
 
 export default connect(null, actions)(App);

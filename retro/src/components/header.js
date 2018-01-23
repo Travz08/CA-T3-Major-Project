@@ -59,13 +59,13 @@ class Header extends Component {
     return (
       <div>
        <Navbar color="faded"  expand="md">
-         <NavbarBrand href="/">Retrospect</NavbarBrand>
+         <NavbarBrand >Retrospect</NavbarBrand>
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>
            <Nav className="ml-auto" navbar>
              <UncontrolledDropdown nav inNavbar>
                <DropdownToggle nav caret>
-                 Options
+                 Menu
                </DropdownToggle>
                <DropdownMenu >
                  <DropdownItem>

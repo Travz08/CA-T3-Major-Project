@@ -50,7 +50,9 @@ export default class Logs extends Component {
               <ListGroup className="logBase">
                   <ListGroupItem active>
                       <ListGroupItemHeading>
-                      <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+                        <div>Add a new log</div>
+                      <Button className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
+
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>
                           New Log

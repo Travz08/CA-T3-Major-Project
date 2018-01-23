@@ -16,7 +16,6 @@ class Log extends Component {
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
             console.log(this.props)
             console.log(this.state.classId)
-            console.log(this.props.auth.last_name)
             this.toggle = this.toggle.bind(this);
 
         }

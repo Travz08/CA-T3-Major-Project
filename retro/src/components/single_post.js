@@ -13,6 +13,7 @@ class SinglePost extends Component {
       return  (
         <Card className="postBox">
           <CardBody>
+            <CardSubtitle className="postSubtitle">{this.props.post.log_id}</CardSubtitle>
             <CardTitle className="postTitle">{this.props.post.title}</CardTitle>
             <CardSubtitle className="postSubtitle">{this.props.post.type}</CardSubtitle>
             <Linkify>

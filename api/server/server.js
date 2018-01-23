@@ -123,7 +123,8 @@ app.post('/post/new', (req, res) => {
     title: req.body.title,
     content: req.body.content,
     log_id: req.body.log_id,
-    user_id: req.body.user_id
+    user_id: req.body.user_id,
+    image_url: req.body.image_url
   });
   // will save model to database.
   post.save().then((doc) => {

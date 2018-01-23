@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import { Card, CardTitle, CardSubtitle, CardText, CardBody } from 'reactstrap';
-import { Media } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardText, CardBody, Media } from 'reactstrap';
 import { connect } from 'react-redux';
 import Linkify from 'react-linkify';
 
@@ -14,31 +13,17 @@ class SinglePost extends Component {
   render() {
     if (this.props.post.log_id == this.props.logId) {
       return  (
-
-        <Media>
+        <CardBody>
           <Media left>
-            <Media object data-src={this.props.post.image_url} alt="Profile Picture" />
+          <Media object data-src={this.props.post.image_url} alt="Profile Picture" />
           </Media>
-          <Media body>
-            <Media heading>
-            {this.props.post.title}
-            </Media>
-            <Media heading>
-              {this.props.post.type}
-            </Media>
-            {this.props.post.content}
-        </Media>
-        </Media>
-        // <Card className="postBox">
-        //   <CardBody>
-        //     <CardSubtitle className="postSubtitle">{this.props.post.log_id}</CardSubtitle>
-        //     <CardTitle className="postTitle"></CardTitle>
-        //     <CardSubtitle className="postSubtitle"></CardSubtitle>
-        //     <Linkify>
-        //     <CardText className="postContent"></CardText>
-        //     </Linkify>
-        //   </CardBody>
-        // </Card>
+          <CardSubtitle className="postSubtitle">{this.props.post.profileName}</CardSubtitle>
+          <CardTitle className="postTitle">{this.props.post.title}</CardTitle>
+          <CardSubtitle className="postSubtitle">{this.props.post.type}</CardSubtitle>
+          <Linkify>
+          <CardText className="postContent">{this.props.post.content}</CardText>
+          </Linkify>
+        </CardBody>
       );
     } else {
       return (

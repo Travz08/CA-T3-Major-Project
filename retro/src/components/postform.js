@@ -34,9 +34,10 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
+    const profileName = this.props.auth.profileName;
     const user_id = this.props.auth._id;
     const image_url = this.props.auth.image;
-    this.state.submit({type, title, content, log_id, user_id});
+    this.state.submit({type, title, content, log_id, user_id, profileName, image_url});
     this.setState({isAlreadySubmitted: true})
   }
 

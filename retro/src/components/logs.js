@@ -34,9 +34,12 @@ export default class Logs extends Component {
       )
     }
 
-    const logsItems = () => {
+    const sortedLogs = [].concat(this.state.log)
+      .sort((oldest, newest) => oldest.date > newest.date)
 
-      return this.state.log.map((log) => {
+
+    const logsItems = () => {
+      return sortedLogs.map((log) => {
       return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
     });
   }

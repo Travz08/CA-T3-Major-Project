@@ -1,5 +1,7 @@
 import React from 'react';
 import SinglePost from './single_post'
+import { Card } from 'reactstrap';
+
 
 export default function Post({ logId, posts }) {
     // const { _id, text, classroom_id } = props;
@@ -15,8 +17,8 @@ export default function Post({ logId, posts }) {
     });
 
     return (
-        <div>
+      <Card className="postBox">
           {postsContent}
-        </div>
+      </Card>
     )
 }

@@ -22,9 +22,6 @@ function handleFormSubmission(event) {
 
   return (
     <div>
-      <div>
-        <ClassRoom classrooms={classrooms} />
-      </div>
       <div className="container row">
         <form className="col s12" onSubmit={handleFormSubmission}>
         <div className="row">

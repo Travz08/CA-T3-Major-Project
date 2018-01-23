@@ -1,7 +1,9 @@
+body {
+  background-color: #333333;
+}
 
-
-.logBase {
-  background-color: blueviolet
+.navbar {
+  background-color: #ec5037;
 }
 
 container-fluid {
@@ -14,10 +16,21 @@ container-fluid {
 
 }
 
+/* Logs Styling */
+.list-group-item.active {
+  background-color: #1c3c5c;
+  border: none;
+}
+
+.list-group-item {
+  background-color: #38A9C7;
+}
+
+/* Posts styling */
 .postBox {
   margin: 5px;
   white-space: normal;
-  
+
 }
 
 .postTitle {
@@ -35,4 +48,8 @@ container-fluid {
 .dashboard{
   font-size: 40px;
   text-align: center;
+}
+
+.class-list {
+  margin-top: 50px;
 }

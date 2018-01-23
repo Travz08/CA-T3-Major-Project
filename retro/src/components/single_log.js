@@ -36,7 +36,7 @@ class Log extends Component {
 
             return (
 
-                    <Col className="col-md-3" style={{minHeight:"100vh"}}>
+                    <Col className="col-lg-4" style={{minHeight:"100vh"}}>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
                             <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}
@@ -48,7 +48,6 @@ class Log extends Component {
                                     New Post
                                 </ModalHeader>
                                     <ModalBody>
-                                        posting to log id: {this.state.log._id}<br/>
                                         <PostForm logs={this.state.log._id} onSubmit={this.state.submit} />
                                     </ModalBody>
 

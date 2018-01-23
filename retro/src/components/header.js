@@ -58,7 +58,7 @@ class Header extends Component {
     // console.log(this.props)
     return (
       <div>
-       <Navbar color="faded" light expand="md">
+       <Navbar color="faded"  expand="md">
          <NavbarBrand href="/">Retrospect</NavbarBrand>
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>

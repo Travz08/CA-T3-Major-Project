@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Modal, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {logId: this.props.match.params.logId, submit: this.props.onSubmit}
-    console.log(this.state.logId)
+    this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false, isAlreadySubmitted: false}
+    console.log(this.state.submit)
+    console.log(this.props.auth)
+    this.toggle = this.toggle.bind(this);
 
   }
 
 
+  //modal code
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 
   handleFormSubmission(event) {
 
@@ -24,32 +34,45 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
-    const user_id = this.props.auth.id
+    const user_id = this.props.auth._id;
     this.state.submit({type, title, content, log_id, user_id});
-    console.log(this.state.submit)
+    this.setState({isAlreadySubmitted: true})
   }
 
   render(){
   return (
-    <div className="container row">
-      <form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
-      <div className="row">
-        <div className="input-field col s6">
-          <input id="type" type="text" className="validate" name="type"/>
-          <label htmlFor="type" >Type &nbsp;</label>
-        </div>
-        <div className="input-field col s6">
-          <input id="title" type="text" className="validate" name="title"/>
-          <label htmlFor="title" >Title &nbsp;</label>
-        </div>
-        <div className="input-field col s6">
-          <input id="content" type="text" className="validate" name="content"/>
-          <label htmlFor="content" >Content &nbsp;</label>
-        </div>
-      </div>
-        <button className="waves-effect waves-light btn" type="submit">Create Post</button>
-      </form>
-    </div>
+
+            <Form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
+
+              <FormGroup>
+                <Label htmlFor="title">Title</Label>
+                <Input id="title" type="text" className="validate" name="title"/>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="type">Type</Label>
+                <Input id="type" type="select" className="validate" name="type">
+                  <option>Summary</option>
+                  <option>Challenge</option>
+                  <option>Resource</option>
+                </Input>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="content">Content</Label>
+                <Input id="content" type="textarea" className="validate" name="content"/>
+              </FormGroup>
+
+            <div className="row">
+              posting to log id: {this.state.logId}<br/>
+            </div>
+
+              <ModalFooter>
+                <Button color="primary" type="submit" onClick={this.toggle}>Submit</Button>
+              </ModalFooter>
+            </Form>
+
+
   )
   }
 }

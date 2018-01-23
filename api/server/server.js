@@ -9,7 +9,7 @@ var {Log} = require('./models/logs');
 var {Post} = require('./models/post');
 var {ClassRoom} = require('./models/classroom');
 var mongoose = require('./db/mongoose');
-const {authenticate} = require('./middleware/authenticate');
+
 
 
 

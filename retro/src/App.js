@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 // redux import
 import { connect } from 'react-redux';
 // importing actions
@@ -9,7 +9,6 @@ import Header from './components/header.js';
 import Landing from './components/landing';
 import Dashboard from './components/dashboard.js';
 import Classroom from './components/classroom';
-import PostForm from './components/postform';
 
 // import * as retroAPI from './api/retrospect'
 import logo from './logo.svg';
@@ -26,8 +25,13 @@ import * as classAPI from './apiCalls/classrooms';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { logs: null, posts: null}
+    console.log(props)
+  }
 
-  state = { logs: null, posts: null}
+
 
 
   componentDidMount() {
@@ -54,15 +58,22 @@ class App extends Component {
     // console.log(title,yearReleased);
     //give it the previous state and then mutate it
     this.setState(( {classrooms}) => (
-      { classrooms: [ classroom].concat(classrooms) }
+      { classrooms: [classroom].concat(classrooms) }
     ));
 
 
   classAPI.save(classroom);
   }
 
+  handleLogSubmission = (log) => {
+    this.setState(({ logs }) => (
+      { logs: [log].concat(logs) }
+    ));
+
+    logsAPI.store(log);
+  }
+
   handlePostSubmission = (post) => {
-    // postsAPI.save(post);
     this.setState(({ posts }) => (
       { posts: [post].concat(posts) }
     ));
@@ -74,11 +85,11 @@ class App extends Component {
   render() {
     const { logs, posts, classrooms } = this.state;
     // console.log(logs, posts)
-    const MyPostForm = (props) => {
+
+
+    const LogClassroom = (props) => {
       return (
-        <PostForm
-          {...props} onSubmit={this.handlePostSubmission}
-        />
+      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} onLogSubmit={this.handleLogSubmission} {...props} />
       );
     }
 
@@ -87,10 +98,9 @@ class App extends Component {
      <BrowserRouter>
       <div>
         <Header />
-        <Route path="/post/:logId" component={MyPostForm} />
-        <Route path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} /> )} />
+        <Route exact path ="/classroom/:id" component={LogClassroom} />
+        <Route exact path="/classroom" render={() => (<ClassRoomForm onSubmit={this.handleClassRoomSubmission} classrooms={classrooms} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
-        <Route path="/logs" render={() => (<Logs logs={logs} posts={posts} />)} />
         <Route exact path='/' component={Landing}></Route>
      </div>
      </BrowserRouter>
@@ -99,5 +109,9 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
 
 export default connect(null, actions)(App);

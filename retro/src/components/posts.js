@@ -5,9 +5,6 @@ export default function Post({ logId, posts }) {
     // const { _id, text, classroom_id } = props;
     // const { title, content, log_id } = posts;
     // console.log('from posts component', logId)
-    if (!posts) {
-      return <div> Loading Posts.. </div>
-    }
 
     // ** Trying to grab the log._id(logId) and match against post.log_id **
     // tried but it only shows last days posts..
@@ -18,8 +15,8 @@ export default function Post({ logId, posts }) {
     });
 
     return (
-        <ul className="col-md-12 list-group">
+        <div>
           {postsContent}
-        </ul>
+        </div>
     )
 }

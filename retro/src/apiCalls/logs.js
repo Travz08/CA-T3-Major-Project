@@ -1,5 +1,6 @@
 
 const retrospectLogsAPI =`https://namenotesapi.herokuapp.com/logs`
+const saveLogsAPI =`https://namenotesapi.herokuapp.com/logs/new`
 
 
 export function all() {
@@ -10,4 +11,16 @@ export function all() {
         // })
         .catch(error => { console.log(error) })
 
+}
+
+export function store(log) {
+  return fetch(saveLogsAPI, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(log)
+  })
+  .then(res => res.json())
+  .catch(error => {console.log(error)})
 }

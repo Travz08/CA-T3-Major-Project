@@ -1,19 +1,25 @@
-import React from 'react';
-import { Row, Col, Card, CardTitle, CardSubtitle, CardText, CardBody, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import React, {Component} from 'react';
+import { Card, CardTitle, CardSubtitle, CardText, CardBody } from 'reactstrap';
+import { connect } from 'react-redux';
+import Linkify from 'react-linkify';
 
-const SinglePost = ({ logId, post }) => {
-  // const video = props.video;
-  // console.log('from single posts component', logId)
+class SinglePost extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-
-    if (post.log_id == logId) {
+  render() {
+    if (this.props.post.log_id == this.props.logId) {
       return  (
         <Card className="postBox">
-        <CardBody>
-            <CardTitle className="postTitle">{post.title}</CardTitle>
-            <CardSubtitle className="postSubtitle">{post.type} LOGID:{post.log_id}</CardSubtitle>
-            <CardText className="postContent">{post.content}</CardText>
-        </CardBody>
+          <CardBody>
+            <CardSubtitle className="postSubtitle">{this.props.post.log_id}</CardSubtitle>
+            <CardTitle className="postTitle">{this.props.post.title}</CardTitle>
+            <CardSubtitle className="postSubtitle">{this.props.post.type}</CardSubtitle>
+            <Linkify>
+            <CardText className="postContent">{this.props.post.content}</CardText>
+            </Linkify>
+          </CardBody>
         </Card>
       );
     } else {
@@ -21,11 +27,16 @@ const SinglePost = ({ logId, post }) => {
         null
       )
     }
-
-    
+}
 
 
 
 };
 
-export default SinglePost
+function mapStateToProps(state) {
+ // returning an object, and passing it to Header as props.
+  return {auth: state.auth}
+}
+
+
+export default connect(mapStateToProps)(SinglePost)

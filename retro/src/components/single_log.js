@@ -36,7 +36,7 @@ class Log extends Component {
 
             return (
 
-                    <Col className="col-4" style={{minHeight:"100vh"}}>
+                    <Col className="col-lg-4" style={{minHeight:"100vh"}}>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
                             <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}

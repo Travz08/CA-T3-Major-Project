@@ -6,6 +6,7 @@ import Linkify from 'react-linkify';
 class SinglePost extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.post.log_id)
   }
 
   render() {
@@ -13,6 +14,7 @@ class SinglePost extends Component {
       return  (
         <Card className="postBox">
           <CardBody>
+            <CardSubtitle className="postSubtitle">{this.props.post.log_id}</CardSubtitle>
             <CardTitle className="postTitle">{this.props.post.title}</CardTitle>
             <CardSubtitle className="postSubtitle">{this.props.post.type}</CardSubtitle>
             <Linkify>

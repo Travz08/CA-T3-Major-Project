@@ -5,7 +5,7 @@ import { Button, Modal, ModalFooter, Form, FormGroup, Label, Input, FormText } f
 export default class LogForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {classId: this.props.classId, submit: this.props.onSubmit, modal: false}
+    this.state = {classId: this.props.classId, submit: this.props.onSubmit, modal: false, isLogSubmitted: false}
     console.log(this.state.submit)
 
     this.toggle = this.toggle.bind(this);
@@ -32,6 +32,7 @@ export default class LogForm extends Component {
     const date = elements["date"].value;
     const classroom_id = this.state.classId;
     this.state.submit({text, date , classroom_id});
+    this.setState({isLogSubmitted: true})
   }
 
   render(){

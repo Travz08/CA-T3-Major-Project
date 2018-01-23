@@ -30,38 +30,9 @@ export default class Logs extends Component {
 
     if (!this.state.log) {
       return (
-        <div className="list-group">
-          <Container-fluid>
-              <Row>
-                  {logFormRender()}
-              </Row>
-          </Container-fluid>
-        </div>
+        <div>Loading Logs...</div>
       )
     }
-
-    const logFormRender = () => {
-    return (
-      <Col className="col-md-3">
-      <ListGroup className="logBase">
-          <ListGroupItem active>
-              <ListGroupItemHeading>
-              <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
-              <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>
-                  New Log
-              </ModalHeader>
-                  <ModalBody>
-                      posting to log id: {this.state.log._id}<br/>
-                      <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
-                  </ModalBody>
-              </Modal>
-              </ListGroupItemHeading>
-          </ListGroupItem>
-      </ListGroup>
-      </Col>
-    )
-  }
 
     const logsItems = () => {
       return this.state.log.map((log) => {
@@ -74,7 +45,24 @@ export default class Logs extends Component {
          <Container-fluid>
             <Row>
               {logsItems()}
-              {logFormRender()}
+              <Col className="col-md-3">
+              <ListGroup className="logBase">
+                  <ListGroupItem active>
+                      <ListGroupItemHeading>
+                      <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                      <ModalHeader toggle={this.toggle}>
+                          New Log
+                      </ModalHeader>
+                          <ModalBody>
+                              posting to log id: {this.state.log._id}<br/>
+                              <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
+                          </ModalBody>
+                      </Modal>
+                      </ListGroupItemHeading>
+                  </ListGroupItem>
+              </ListGroup>
+              </Col>
             </Row>
          </Container-fluid>
        </div>

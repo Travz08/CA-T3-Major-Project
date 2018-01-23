@@ -28,27 +28,16 @@ export default class LogForm extends Component {
     // event.stopPropagation - prevents the event from going up the chain
     event.preventDefault();
     const {elements} = event.target;
-    const text = elements["text"].value;
     const date = elements["date"].value;
     const classroom_id = this.state.classId;
-    this.state.submit({text, date , classroom_id});
+    this.state.submit({date , classroom_id});
     this.setState({isLogSubmitted: true})
   }
 
   render(){
   return (
 
-            <Form className="col s12" onSubmit={this.handleFormSubmission.bind(this)}>
-              <FormGroup>
-                <Label htmlFor="text" >Day &nbsp;</Label>
-                <Input id="text" type="select" className="validate" name="text">
-                  <option>Monday</option>
-                  <option>Tuesday</option>
-                  <option>Wednesday</option>
-                  <option>Thursday</option>
-                  <option>Friday</option>
-                </Input>
-              </FormGroup>
+            <Form onSubmit={this.handleFormSubmission.bind(this)}>
               <FormGroup>
                 <Label htmlFor="date" >Date &nbsp;</Label>
                 <Input id="date" type="date" className="validate" name="date"/>

@@ -29,7 +29,8 @@ container-fluid {
 /* Posts styling */
 .postBox {
   margin: 5px;
-  white-space: normal;  
+  white-space: normal;
+
 }
 
 .postTitle {
@@ -47,4 +48,8 @@ container-fluid {
 .dashboard{
   font-size: 40px;
   text-align: center;
+}
+
+.class-list {
+  margin-top: 50px;
 }

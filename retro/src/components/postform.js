@@ -7,8 +7,8 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false, isAlreadySubmitted: false}
-    console.log(this.state.submit)
     console.log(this.props.auth)
+    // console.log(this.props.auth)
     this.toggle = this.toggle.bind(this);
 
   }
@@ -34,8 +34,10 @@ class PostForm extends Component {
     const title = elements["title"].value;
     const content = elements["content"].value;
     const log_id = this.state.logId;
+    const profileName = this.props.auth.profileName;
     const user_id = this.props.auth._id;
-    this.state.submit({type, title, content, log_id, user_id});
+    const image_url = this.props.auth.image;
+    this.state.submit({type, title, content, log_id, user_id, profileName, image_url});
     this.setState({isAlreadySubmitted: true})
   }
 

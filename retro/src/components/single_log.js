@@ -48,7 +48,6 @@ class Log extends Component {
                                     New Post
                                 </ModalHeader>
                                     <ModalBody>
-                                        posting to log id: {this.state.log._id}<br/>
                                         <PostForm logs={this.state.log._id} onSubmit={this.state.submit} />
                                     </ModalBody>
 

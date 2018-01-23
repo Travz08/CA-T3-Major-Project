@@ -40,9 +40,11 @@ passport.use(new GoogleStrategy({
 // Asynchronus method so it returns a promise.
     User.findOne({ googleId: profile.id }).then((existingUser => {
       if (existingUser) {
+        console.log("You already exist!!")
         // we have user with an id in our database.
         done(null, existingUser);
       } else {
+        console.log("I am creating a new user!")
         // we will create a user into our database.
         // remember calling new User - creates a mongoose model instance.
         // A model instance represents a single record inside of the collection.

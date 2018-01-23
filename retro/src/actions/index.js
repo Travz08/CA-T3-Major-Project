@@ -6,7 +6,7 @@ import { FETCH_USER } from './types';
 // redux thunk will see that it is a function and will call the dispatch. Using redux in the function below
 
 // our action creator v3 - refactored.
-// we are now passing res.data since that is the only thing we care about. 
+// we are now passing res.data since that is the only thing we care about.
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
   //axios returns a promise.

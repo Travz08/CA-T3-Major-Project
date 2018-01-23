@@ -35,7 +35,7 @@ export default class Logs extends Component {
     }
 
     const logsItems = () => {
-    
+
       return this.state.log.map((log) => {
       return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
     });
@@ -46,7 +46,7 @@ export default class Logs extends Component {
          <Container-fluid>
             <Row className="col-12">
               {logsItems()}
-              <Col className="col-3">
+              <Col className="col-lg-4">
               <ListGroup className="logBase">
                   <ListGroupItem active>
                       <ListGroupItemHeading>
@@ -56,7 +56,6 @@ export default class Logs extends Component {
                           New Log
                       </ModalHeader>
                           <ModalBody>
-                              posting to log id: {this.state.log._id}<br/>
                               <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
                           </ModalBody>
                       </Modal>

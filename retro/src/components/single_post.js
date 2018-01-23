@@ -6,6 +6,7 @@ import Linkify from 'react-linkify';
 class SinglePost extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.post.log_id)
   }
 
   render() {

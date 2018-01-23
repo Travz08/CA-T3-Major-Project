@@ -8,7 +8,7 @@ class PostForm extends Component {
     super(props);
     this.state = {logId: this.props.logs, submit: this.props.onSubmit, modal: false, isAlreadySubmitted: false}
     console.log(this.state.submit)
-    console.log(this.props.auth)
+    // console.log(this.props.auth)
     this.toggle = this.toggle.bind(this);
 
   }

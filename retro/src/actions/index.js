@@ -8,7 +8,7 @@ import { FETCH_USER } from './types';
 // our action creator v3 - refactored.
 // we are now passing res.data since that is the only thing we care about.
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user')
+  const res = await axios.get('https://namenotesapi.herokuapp.com/api/current_user')
   //axios returns a promise.
   dispatch({type: FETCH_USER, payload: res.data});
 

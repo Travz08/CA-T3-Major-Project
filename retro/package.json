@@ -4,10 +4,10 @@
   "private": true,
   "proxy": {
     "/auth/google": {
-      "target": "http://localhost:5000"
+      "target": "https://namenotesapi.herokuapp.com"
     },
     "/api/*": {
-      "target": "http://localhost:5000"
+      "target": "https://namenotesapi.herokuapp.com"
     },
     "/class/new": {
       "target": "http://localhost:5000"

@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId
 
-// const log = {
-//   type: ObjectId, ref:'Log'
-// }
-
+//schema of posts. 
 const PostSchema = mongoose.Schema({
   type: String,
   title: String,

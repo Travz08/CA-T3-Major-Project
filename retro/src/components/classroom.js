@@ -21,7 +21,7 @@ export default function ClassRoom({ classrooms }) {
 
   return (
       <Container className="classroom-body">
-        <h1 className="mx-auto class-header">Classrooms</h1>
+        <h1 className="mx-auto class-header trademark">Classrooms</h1>
         <ListGroup className="class-list mx-auto" >
           {classItems}
         </ListGroup>

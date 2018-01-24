@@ -10,9 +10,6 @@ var {Post} = require('./models/post');
 var {ClassRoom} = require('./models/classroom');
 var mongoose = require('./db/mongoose');
 
-
-
-
 const app = express();
 // telling express that we are using cookies, this will flow down to initialize and session.
 app.use(
@@ -23,6 +20,13 @@ app.use(
     keys: [keys.cookieKey]
   })
 );
+
+// CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //initialises authentication module.
 app.use(passport.initialize());
@@ -39,26 +43,7 @@ app.use(bodyParser.json());
 // same as going authRoutes(app) if we imported above.
 require('./routes/authRoutes')(app);
 
-// routes for when we deploy react app.
-// if (process.env.NODE_ENV === 'production') {
-//   // express will serve up production assets. Main js file and mains css file
-//   app.use(express.static('build/static'));
-
-//   const path = require('path');
-
-//   app.get('*' (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'build', 'static', 'index.html'))
-//   })
-// }
-
 const port = process.env.PORT || 5000;
-
-// CORS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 app.get('/', (req, rest) => {
   console.log('Hello World')
@@ -78,7 +63,6 @@ app.get('/logs', (req, res) => {
 app.post('/logs/new', (req, res) => {
   // creating a new instance of the mongoose model Todo
   var log = new Log({
-    text: req.body.text,
     date: req.body.date,
     classroom_id: req.body.classroom_id
   });
@@ -152,11 +136,3 @@ app.listen(port, () => {
 });
 
 module.exports = {app};
-
-
-// app.post('/tag/new', (req, res) => {
-//   var tag = new Tag ({
-//     tag_name: req.body.type,
-//     post_id: req.body.post_id
-//   })
-// });

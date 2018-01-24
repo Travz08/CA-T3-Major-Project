@@ -1,3 +1,4 @@
+
 body {
   background-color: #333333;
 }
@@ -6,9 +7,33 @@ body {
   background-color: rgb(244, 108, 37);
 }
 
-.coolstuff{
-  color: white !important;
-  background-color: white !important
+.loginButton{
+  color: white !important
+}
+
+.btn-warning {
+  color: white !important; /*Make the color Change Here*/
+  background-color: #333333;
+  font-family: 'Rock Salt', cursive;
+  border-color: #38A9C7;
+}
+
+.btn-warning:hover{
+  background-color: #38A9C7;
+  border-color: #38A9C7;
+}
+
+.landingButton {
+  color: white !important; /*Make the color Change Here*/
+  background-color:#38A9C7;
+  font-family: 'Rock Salt', cursive;
+  border-color: #38A9C7;
+}
+
+
+.trademark{
+  font-family: 'Rock Salt', cursive;
+  color: white
 }
 
 container-fluid {
@@ -34,7 +59,7 @@ container-fluid {
 
 .list-group-item-heading {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   font-size: 2.25rem;
 
 }

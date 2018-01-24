@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button } from 'reactstrap';
+import retrospectLogo from '../retrospect_logo.png';
 
 
 class Header extends Component {
@@ -60,7 +61,7 @@ class Header extends Component {
       case null:
         return 'Login With Google';
       case false:
-        return <NavLink href="/auth/google">Login With Google</NavLink>
+        return <NavLink className="loginButton" href="/auth/google">Login With Google</NavLink>
       default:
       return null;
     }
@@ -72,11 +73,12 @@ class Header extends Component {
       return (
         <div>
          <Navbar expand="md">
-           <NavbarBrand  href="/">Retrospect</NavbarBrand>
+           <NavbarBrand  className="trademark" href="/"><img src={retrospectLogo}/></NavbarBrand>
            <NavbarToggler onClick={this.toggle} />
+
            <Collapse isOpen={this.state.isOpen} navbar>
              <Nav className="ml-auto" navbar>
-             <Button className="coolstuff">
+             <Button className="btn btn-warning landingButton">
                 {this.renderButton()}
              </Button>
              </Nav>
@@ -88,14 +90,15 @@ class Header extends Component {
     return (
       <div>
        <Navbar color="faded"  expand="md">
-         <NavbarBrand >Retrospect</NavbarBrand>
+         <NavbarBrand  className="trademark" href="/"><img src={retrospectLogo}/></NavbarBrand>
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>
            <Nav className="ml-auto" navbar>
-           {this.renderButton()}
              <UncontrolledDropdown nav inNavbar>
                <DropdownToggle nav caret>
+                 <Button className="btn btn-warning">
                  Menu
+                 </Button>
                </DropdownToggle>
                <DropdownMenu >
                  <DropdownItem>

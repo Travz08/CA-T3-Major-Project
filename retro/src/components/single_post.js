@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, CardTitle, CardSubtitle, CardText, CardBody } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardText, CardBody, Media } from 'reactstrap';
 import { connect } from 'react-redux';
 import Linkify from 'react-linkify';
 

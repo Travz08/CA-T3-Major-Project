@@ -16,13 +16,10 @@ export default function ClassRoom({ classrooms }) {
     )
   });
 
-
-
-
   return (
       <div className="col-md-12 list-group">
         <h1 className="mx-auto trademark">Classrooms</h1>
         {classItems}
       </div>
     )
-}
+};

@@ -96,7 +96,7 @@ class Header extends Component {
            <Nav className="ml-auto" navbar>
              <UncontrolledDropdown nav inNavbar>
                <DropdownToggle nav caret>
-                 <Button className="btn btn-warning">
+                 <Button className="btn btn-warning landingButton">
                  Menu
                  </Button>
                </DropdownToggle>

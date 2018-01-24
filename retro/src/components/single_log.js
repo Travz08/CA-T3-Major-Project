@@ -29,11 +29,15 @@ class Log extends Component {
     render() {
           if (this.state.classId === this.state.log.classroom_id) {
 
+            if (!this.state.posts) {
+              return (<div> Loading.. </div>)
+            }
+
             if (!this.state.log) {
               return (<div> Loading.. </div>)
             }
             const date = new Date(this.state.log.date);
-            const options = {day: "2-digit", year: "numeric", weekday: "short"}
+            const options = {day: "2-digit", month:"short", year: "numeric", weekday: "short"}
 
             return (
 

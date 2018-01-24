@@ -31,9 +31,6 @@ class App extends Component {
     console.log(props)
   }
 
-
-
-
   componentDidMount() {
     // action creator - will start the action.
     this.props.fetchUser();

@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import Log from './single_log';
-import { Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Button, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
+import {
+  Col,
+  ListGroup,
+  ListGroupItem,
+  ListGroupItemHeading,
+  ListGroupItemText,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Row
+} from 'reactstrap';
 import LogForm from './logform'
 
 export default class Logs extends Component {
   constructor(props) {
     super(props);
-    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit, classroomName: this.props.classrooms }
-    // console.log(this.state.logSubmit)
-
+    this.state = {
+      log: this.props.logs,
+      posts: this.props.posts,
+      classId: this.props.match.params.id,
+      submit: this.props.onSubmit,
+      logSubmit: this.props.onLogSubmit,
+      classroomName: this.props.classrooms
+      }
     this.toggle = this.toggle.bind(this);
   }
 
@@ -20,6 +37,8 @@ export default class Logs extends Component {
 
 
   render() {
+
+  //Guards while API returns something
     if (!this.state.posts) {
       return (
         <div>
@@ -39,18 +58,11 @@ export default class Logs extends Component {
         <div>Loading Logs...</div>
       )
     }
-    //
-    // const className = () => {
-    //
-    //   return this.state.log.map((log) => {
-    //   if (this.state.className._id = this.state.classId )
-    //   return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
-    //   });
-    // }
 
+//Sorts array by date. Oldest to newest
     const sortedLogs = [].concat(this.state.log)
       .sort((oldest, newest) => oldest.date > newest.date)
-
+//Renders the correct classroom name to DOM
     const renderClassroomName = () => {
       return this.state.classroomName.map((classroomname) => {
         if (classroomname._id == this.state.classId) {
@@ -60,7 +72,14 @@ export default class Logs extends Component {
 
     const logsItems = () => {
       return sortedLogs.map((log) => {
-      return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
+      return (
+        <Log
+          posts={this.state.posts}
+          classId={this.state.classId}
+          log={log}
+          key={this.state.log._id}
+          onSubmit={this.state.submit}
+        />)
       });
     }
 
@@ -77,12 +96,14 @@ export default class Logs extends Component {
                         <div>Add a new log</div>
                       <Button className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
 
-                      <Modal isOpen={this.state.modal} toggle={this.toggle} >
+                      <Modal isOpen={this.state.modal} toggle={this.toggle}>
                       <ModalHeader toggle={this.toggle}>
                           New Log
                       </ModalHeader>
                           <ModalBody>
-                              <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
+                              <LogForm
+                                classId={this.state.classId}
+                                onSubmit={this.state.logSubmit} />
                           </ModalBody>
                       </Modal>
                       </ListGroupItemHeading>

@@ -2,7 +2,7 @@ const mongoose =  require('mongoose');
 const User = mongoose.model('users');
 const bodyParser = require('body-parser');
 
-// Google Oauth and passport
+// Google Oauth and passport.
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
@@ -63,28 +63,3 @@ passport.use(new GoogleStrategy({
 
   })
 );
-
-
-// // Asynchronus method so it returns a promise.
-//     User.findOne({ googleId: profile.id }).then((existingUser => {
-//       if (existingUser) {
-//         // we have user with an id in our database.
-//         done(null, existingUser);
-//       } else {
-//         // we will create a user into our database.
-//         // remember calling new User - creates a mongoose model instance.
-//         // A model instance represents a single record inside of the collection.
-//         new User({
-//           googleId: profile.id,
-//            profileName: profile.displayName,
-//             first_name: profile.name.givenName,
-//              last_name: profile.name.familyName
-//            })
-//            .save()
-//            .then(user => done(null, user));
-//       }
-//     }))
-//
-//
-//   })
-// );

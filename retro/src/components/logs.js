@@ -6,7 +6,7 @@ import LogForm from './logform'
 export default class Logs extends Component {
   constructor(props) {
     super(props);
-    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit }
+    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit, className: this.props.className }
     // console.log(this.state.logSubmit)
 
     this.toggle = this.toggle.bind(this);
@@ -33,13 +33,24 @@ export default class Logs extends Component {
         <div>Loading Logs...</div>
       )
     }
+    //
+    // const className = () => {
+    //
+    //   return this.state.log.map((log) => {
+    //   if (this.state.className._id = this.state.classId )
+    //   return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
+    //   });
+    // }
+
+    const sortedLogs = [].concat(this.state.log)
+      .sort((oldest, newest) => oldest.date > newest.date)
+
 
     const logsItems = () => {
-
-      return this.state.log.map((log) => {
+      return sortedLogs.map((log) => {
       return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
-    });
-  }
+      });
+    }
 
     return (
       <div className="list-group" key={this.state.log.id}  >
@@ -50,7 +61,9 @@ export default class Logs extends Component {
               <ListGroup className="logBase">
                   <ListGroupItem active>
                       <ListGroupItemHeading>
-                      <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+                        <div>Add a new log</div>
+                      <Button className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
+
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>
                           New Log

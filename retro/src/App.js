@@ -89,7 +89,7 @@ class App extends Component {
 
     const LogClassroom = (props) => {
       return (
-      <Logs logs={logs} posts={posts} onSubmit={this.handlePostSubmission} onLogSubmit={this.handleLogSubmission} {...props} />
+      <Logs logs={logs} posts={posts} classrooms={classrooms} onSubmit={this.handlePostSubmission} onLogSubmit={this.handleLogSubmission} {...props} />
       );
     }
 

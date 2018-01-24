@@ -3,6 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 const { Schema } = mongoose;
 
+// schema for user model. 
 const userSchema =  new Schema ({
   googleId: String,
   profileName: String,

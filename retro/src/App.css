@@ -1,10 +1,41 @@
+
 body {
   background-color: #333333;
 }
 
 .navbar {
-  background-color: #ec5037;
+  background-color: rgb(244, 108, 37);
 }
+
+.loginButton{
+  color: white !important
+}
+
+.btn-warning {
+  color: white !important; /*Make the color Change Here*/
+  background-color: #333333;
+  font-family: 'Rock Salt', cursive;
+  border-color: #38A9C7;
+}
+
+.btn-warning:hover{
+  background-color: #38A9C7;
+  border-color: #38A9C7;
+}
+
+.landingButton {
+  color: white !important; /*Make the color Change Here*/
+  background-color:#38A9C7;
+  font-family: 'Rock Salt', cursive;
+  border-color: #38A9C7;
+}
+
+
+.trademark{
+  font-family: 'Rock Salt', cursive;
+  color: white
+}
+
 
 container-fluid {
   overflow-x: scroll;
@@ -24,6 +55,19 @@ container-fluid {
 
 .list-group-item {
   background-color: #38A9C7;
+  padding: 0.75rem 0.25rem;
+}
+
+.list-group-item-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.25rem;
+
+}
+
+.newPostButton {
+  background-color: #38A9C7;
+  border: none;
 }
 
 /* Posts styling */
@@ -47,9 +91,50 @@ container-fluid {
 
 .dashboard{
   font-size: 40px;
+  background-color: rgb(117, 179, 198);
   text-align: center;
 }
 
+.class-link {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* unvisited link */
+.class-link:link {
+    color: #1c3c5c;
+    font-family: 'Rock Salt', cursive;
+}
+
+/* visited link */
+.class-link:visited {
+
+    color: #1c3c5c;
+}
+
+/* mouse over link */
+.class-link:hover {
+    color: #fff;
+    background-color: #1c3c5c;
+}
+
+
+
 .class-list {
   margin-top: 50px;
+  /*width: 400px;*/
+  display: flex;
+  justify-content: center;
+}
+
+.class-header {
+  color: #fff;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.logBase {
+  overflow-y: scroll;
 }

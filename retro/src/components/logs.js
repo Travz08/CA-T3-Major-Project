@@ -6,7 +6,7 @@ import LogForm from './logform'
 export default class Logs extends Component {
   constructor(props) {
     super(props);
-    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit, className: this.props.className }
+    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit, classroomName: this.props.classrooms }
     // console.log(this.state.logSubmit)
 
     this.toggle = this.toggle.bind(this);
@@ -28,6 +28,12 @@ export default class Logs extends Component {
       )
     }
 
+    if (!this.state.classroomName) {
+      return (
+        <div>Loading Classroom Name...</div>
+      )
+    }
+
     if (!this.state.log) {
       return (
         <div>Loading Logs...</div>
@@ -45,6 +51,12 @@ export default class Logs extends Component {
     const sortedLogs = [].concat(this.state.log)
       .sort((oldest, newest) => oldest.date > newest.date)
 
+    const renderClassroomName = () => {
+      return this.state.classroomName.map((classroomname) => {
+        if (classroomname._id == this.state.classId) {
+      return classroomname.class_name }
+      });
+    }
 
     const logsItems = () => {
       return sortedLogs.map((log) => {
@@ -54,6 +66,7 @@ export default class Logs extends Component {
 
     return (
       <div className="list-group" key={this.state.log.id}  >
+        <h1 className="mx-auto classroom-header trademark">{renderClassroomName()}</h1>
          <Container-fluid>
             <Row className="col-12">
               {logsItems()}
@@ -64,7 +77,7 @@ export default class Logs extends Component {
                         <div>Add a new log</div>
                       <Button className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
 
-                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                      <Modal isOpen={this.state.modal} toggle={this.toggle} >
                       <ModalHeader toggle={this.toggle}>
                           New Log
                       </ModalHeader>

@@ -15,7 +15,7 @@ class Log extends Component {
             super(props);
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
             this.toggle = this.toggle.bind(this);
-            
+
         }
 
 
@@ -38,7 +38,7 @@ class Log extends Component {
             return (
 
                     <Col className="col-lg-4" style={{minHeight:"100vh"}}>
-                    <ListGroup className="logBase">
+                    <ListGroup style={{maxHeight:"90vh"}} >
                         <ListGroupItem active>
                             <ListGroupItemHeading>
                                 {date.toLocaleDateString("en-US", options)}
@@ -54,7 +54,7 @@ class Log extends Component {
 
                             </ListGroupItemHeading>
                         </ListGroupItem>
-                        <ListGroupItem>
+                        <ListGroupItem  className="logBase" >
                         <Post posts={this.state.posts} logId={this.state.log._id} />
                         </ListGroupItem>
                     </ListGroup>

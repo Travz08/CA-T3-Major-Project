@@ -15,7 +15,14 @@ const post = [{
   type: 'Second test post'
 }];
 
-//
+const logs = [{
+    _id: new ObjectID(),
+    date: 2017/08/09
+  }, {
+    _id: new ObjectID(),
+    date: 2018/07/09
+}];
+
 // testing lifecycle method.
 // will run before every test case. Will only move to other test case after done is called
 // insertMany will insert the contents of the todo array
@@ -25,6 +32,24 @@ beforeEach((done) => {
   }).then(() => done());
 });
 
+beforeEach((done) => {
+  Log.remove({}).then(() => {
+    Log.insertMany(logs);
+  }).then(() => done());
+});
+
+
+describe('GET /posts', () => {
+  it('should get all posts', (done) =>{
+    request(app)
+    .get('/posts')
+    .expect(200)
+    .expect((res) => {
+      expect(res.body.post.length).toBe(2)
+    })
+    .end(done);
+  })
+})
 
 // assuming there is nothing in our database.
 // asynchronous test so have to specify done.
@@ -33,7 +58,8 @@ describe('POST /post/new', () => {
   it('should create a new post', (done) => {
     var type = 'Test post text';
     request(app)
-    .post('/posts/new')
+    .post('/post/new')
+    .send({type})
     .expect(200)
     .expect((res) => {
       expect(res.body.type).toBe(type);
@@ -50,6 +76,18 @@ describe('POST /post/new', () => {
         done();
         // statement syntax as apposed to arrow function.
       }).catch((e) => done(e));
-    });
-  });
+    })
+  })
 });
+
+describe('GET /logs', () => {
+  it('should get all logs', (done) =>{
+    request(app)
+    .get('/logs')
+    .expect(200)
+    .expect((res) => {
+      expect(res.body.logs.length).toBe(2)
+    })
+    .end(done);
+  })
+})

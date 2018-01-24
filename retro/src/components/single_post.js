@@ -14,9 +14,8 @@ class SinglePost extends Component {
         <Card className="postBox">
         <CardBody>
           <Media left>
-          <Media object src={this.props.post.image_url} alt="Profile Picture" />
+          <Media object className="avatar" src={this.props.post.image_url} alt="Profile Picture" /> <span className="profileName">{this.props.post.profileName}</span >
           </Media>
-          <CardSubtitle className="postSubtitle">{this.props.post.profileName}</CardSubtitle>
           <CardTitle className="postTitle">{this.props.post.title}</CardTitle>
           <CardSubtitle className="postSubtitle">{this.props.post.type}</CardSubtitle>
           <Linkify>

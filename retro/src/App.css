@@ -7,6 +7,10 @@ body {
   background-color: rgb(244, 108, 37);
 }
 
+.landing_image{
+  width: 100%;
+}
+
 .loginButton{
   color: white !important
 }
@@ -61,7 +65,7 @@ container-fluid {
 .list-group-item-heading {
   display: flex;
   justify-content: space-between;
-  font-size: 2.25rem;
+  font-size: 1.8rem;
 
 }
 

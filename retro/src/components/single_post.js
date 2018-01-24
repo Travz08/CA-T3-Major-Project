@@ -15,7 +15,7 @@ class SinglePost extends Component {
       return  (
         <CardBody>
           <Media left>
-          <Media object data-src={this.props.post.image_url} alt="Profile Picture" />
+          <Media object src={this.props.post.image_url} alt="Profile Picture" />
           </Media>
           <CardSubtitle className="postSubtitle">{this.props.post.profileName}</CardSubtitle>
           <CardTitle className="postTitle">{this.props.post.title}</CardTitle>

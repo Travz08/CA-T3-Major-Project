@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Button } from 'reactstrap';
+import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
 export default function ClassRoom({ classrooms }) {
 
@@ -10,9 +10,11 @@ export default function ClassRoom({ classrooms }) {
 
   const classItems = classrooms.map((classroom) => {
     return (
+      <ListGroupItem>
       <Button color="primary" className="mx-auto class-list" tag={Link} key={classroom._id} to={`/classroom/${classroom._id}`}>
             <div>{classroom.class_name}</div>
       </Button>
+      </ListGroupItem>
     )
   });
 
@@ -20,9 +22,11 @@ export default function ClassRoom({ classrooms }) {
 
 
   return (
-      <div className="col-md-12 list-group">
+      <div className="col-md-12">
         <h1 className="mx-auto">Classrooms</h1>
-        {classItems}
+        <ListGroup>
+          {classItems}
+        </ListGroup>
       </div>
     )
 }

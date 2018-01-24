@@ -6,7 +6,7 @@ import LogForm from './logform'
 export default class Logs extends Component {
   constructor(props) {
     super(props);
-    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit }
+    this.state = {log: this.props.logs, posts: this.props.posts, classId: this.props.match.params.id, submit: this.props.onSubmit, logSubmit: this.props.onLogSubmit, className: this.props.className }
     // console.log(this.state.logSubmit)
 
     this.toggle = this.toggle.bind(this);
@@ -33,38 +33,49 @@ export default class Logs extends Component {
         <div>Loading Logs...</div>
       )
     }
+    // 
+    // const className = () => {
+    //
+    //   return this.state.log.map((log) => {
+    //   if (this.state.className._id = this.state.classId )
+    //   return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
+    //   });
+    // }
 
     const logsItems = () => {
 
       return this.state.log.map((log) => {
       return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
-    });
-  }
+      });
+    }
 
     return (
-      <div className="list-group" key={this.state.log.id}  >
-         <Container-fluid>
-            <Row className="col-12">
-              {logsItems()}
-              <Col className="col-lg-4">
-              <ListGroup className="logBase">
-                  <ListGroupItem active>
-                      <ListGroupItemHeading>
-                      <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
-                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                      <ModalHeader toggle={this.toggle}>
-                          New Log
-                      </ModalHeader>
-                          <ModalBody>
-                              <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
-                          </ModalBody>
-                      </Modal>
-                      </ListGroupItemHeading>
-                  </ListGroupItem>
-              </ListGroup>
-              </Col>
-            </Row>
-         </Container-fluid>
+      <div>
+        <h1></h1>
+        <div className="list-group" key={this.state.log.id}  >
+           <Container-fluid>
+              <Row className="col-12">
+                {logsItems()}
+                <Col className="col-lg-4">
+                <ListGroup className="logBase">
+                    <ListGroupItem active>
+                        <ListGroupItemHeading>
+                        <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>
+                            New Log
+                        </ModalHeader>
+                            <ModalBody>
+                                <LogForm classId={this.state.classId} onSubmit={this.state.logSubmit} />
+                            </ModalBody>
+                        </Modal>
+                        </ListGroupItemHeading>
+                    </ListGroupItem>
+                </ListGroup>
+                </Col>
+              </Row>
+           </Container-fluid>
+         </div>
        </div>
       )
     }

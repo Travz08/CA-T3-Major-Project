@@ -14,10 +14,8 @@ class Log extends Component {
       constructor(props) {
             super(props);
             this.state = {log: this.props.log, posts: this.props.posts, classId: this.props.classId, submit: this.props.onSubmit, modal: false}
-            console.log(this.props)
-            console.log(this.state.classId)
             this.toggle = this.toggle.bind(this);
-
+            
         }
 
 
@@ -25,7 +23,8 @@ class Log extends Component {
         this.setState({
           modal: !this.state.modal
         });
-      }
+      };
+
 
     render() {
           if (this.state.classId === this.state.log.classroom_id) {
@@ -33,29 +32,26 @@ class Log extends Component {
             if (!this.state.log) {
               return (<div> Loading.. </div>)
             }
+            const date = new Date(this.state.log.date);
+            const options = {day: "2-digit", year: "numeric", weekday: "short"}
 
             return (
 
                     <Col className="col-lg-4" style={{minHeight:"100vh"}}>
                     <ListGroup className="logBase">
                         <ListGroupItem active>
-                            <ListGroupItemHeading>{this.state.log.text} {this.state.log.date}
-                                <br/>
-
-                                <Button color="success" onClick={this.toggle}>{this.props.buttonLabel}NEW POST </Button>
-                                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                                <ModalHeader toggle={this.toggle}>
-                                    New Post
-                                </ModalHeader>
+                            <ListGroupItemHeading>
+                                {date.toLocaleDateString("en-US", options)}
+                                <Button  className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
+                                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                                        <ModalHeader toggle={this.toggle}>
+                                            New Post
+                                        </ModalHeader>
                                     <ModalBody>
                                         <PostForm logs={this.state.log._id} onSubmit={this.state.submit} />
                                     </ModalBody>
-
                                 </Modal>
-                                <br/>
-                                    <span>
-                                        Classroom ID: {this.state.log.classroom_id}
-                                    </span>
+
                             </ListGroupItemHeading>
                         </ListGroupItem>
                         <ListGroupItem>

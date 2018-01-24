@@ -34,9 +34,12 @@ export default class Logs extends Component {
       )
     }
 
-    const logsItems = () => {
+    const sortedLogs = [].concat(this.state.log)
+      .sort((oldest, newest) => oldest.date > newest.date)
 
-      return this.state.log.map((log) => {
+
+    const logsItems = () => {
+      return sortedLogs.map((log) => {
       return <Log posts={this.state.posts} classId={this.state.classId} log={log} key={this.state.log._id} onSubmit={this.state.submit} />
     });
   }
@@ -50,7 +53,9 @@ export default class Logs extends Component {
               <ListGroup className="logBase">
                   <ListGroupItem active>
                       <ListGroupItemHeading>
-                      <Button color="primary" onClick={this.toggle}>{this.props.buttonLabel}+ </Button>
+                        <div>Add a new log</div>
+                      <Button className="newPostButton" onClick={this.toggle}>{this.props.buttonLabel} + </Button>
+
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>
                           New Log

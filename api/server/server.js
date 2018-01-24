@@ -39,6 +39,17 @@ app.use(bodyParser.json());
 // same as going authRoutes(app) if we imported above.
 require('./routes/authRoutes')(app);
 
+// routes for when we deploy react app.
+// if (process.env.NODE_ENV === 'production') {
+//   // express will serve up production assets. Main js file and mains css file
+//   app.use(express.static('build/static'));
+
+//   const path = require('path');
+
+//   app.get('*' (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'build', 'static', 'index.html'))
+//   })
+// }
 
 const port = process.env.PORT || 5000;
 

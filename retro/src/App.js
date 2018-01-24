@@ -99,7 +99,7 @@ class App extends Component {
       <div>
         <Header />
         <Route exact path ="/classroom/:id" component={LogClassroom} />
-        <Route exact path="/classroom" render={() => (<ClassRoomForm classrooms={classrooms} onSubmit={this.handleClassRoomSubmission}/> )} />
+        <Route exact path="/classroom" render={() => (<ClassRoom classrooms={classrooms} /> )} />
         <Route path="/dashboard" component={Dashboard}></Route>
         <Route exact path='/' component={Landing}></Route>
      </div>

@@ -12,7 +12,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+  Button } from 'reactstrap';
 
 
 class Header extends Component {
@@ -36,7 +37,7 @@ class Header extends Component {
       case null:
         return 'Still deciding';
       case false:
-        return <NavLink href="/auth/google">Login With Google</NavLink>
+        return null;
       default:
         return <NavLink href="/api/logout">Logout</NavLink>
     }
@@ -54,8 +55,36 @@ class Header extends Component {
     }
   }
 
+  renderButton() {
+    switch (this.props.auth) {
+      case null:
+        return 'Login With Google';
+      case false:
+        return <NavLink href="/auth/google">Login With Google</NavLink>
+      default:
+      return null;
+    }
+  }
+
+
   render() {
-    // console.log(this.props)
+    if (this.props.auth === false ) {
+      return (
+        <div>
+         <Navbar expand="md">
+           <NavbarBrand  href="/">Retrospect</NavbarBrand>
+           <NavbarToggler onClick={this.toggle} />
+           <Collapse isOpen={this.state.isOpen} navbar>
+             <Nav className="ml-auto" navbar>
+             <Button className="coolstuff">
+                {this.renderButton()}
+             </Button>
+             </Nav>
+           </Collapse>
+         </Navbar>
+        </div>
+      )
+    } else {
     return (
       <div>
        <Navbar color="faded"  expand="md">
@@ -63,9 +92,10 @@ class Header extends Component {
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>
            <Nav className="ml-auto" navbar>
+           {this.renderButton()}
              <UncontrolledDropdown nav inNavbar>
                <DropdownToggle nav caret>
-                 Options
+               Options
                </DropdownToggle>
                <DropdownMenu >
                  <DropdownItem>
@@ -82,8 +112,15 @@ class Header extends Component {
        </Navbar>
      </div>
     )
+    }
   }
 };
+
+
+
+
+
+
 
   // gets called with the entire state object out of the redux store.
   // the only thing we care about is the auth piece of state.

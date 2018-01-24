@@ -3,7 +3,12 @@ body {
 }
 
 .navbar {
-  background-color: #ec5037;
+  background-color: rgb(244, 108, 37);
+}
+
+.coolstuff{
+  color: white !important;
+  background-color: white !important
 }
 
 container-fluid {
@@ -47,7 +52,12 @@ container-fluid {
 
 .dashboard{
   font-size: 40px;
+  background-color: rgb(117, 179, 198);
   text-align: center;
+}
+
+.landing_image{
+  width: 100%;
 }
 
 .class-list {

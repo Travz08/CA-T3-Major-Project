@@ -95,8 +95,8 @@ class Header extends Component {
          <Collapse isOpen={this.state.isOpen} navbar>
            <Nav className="ml-auto" navbar>
              <UncontrolledDropdown nav inNavbar>
-               <DropdownToggle nav caret>
-                 <Button className="btn btn-warning">
+               <DropdownToggle nav>
+                 <Button className="btn btn-warning landingButton">
                  Menu
                  </Button>
                </DropdownToggle>

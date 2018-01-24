@@ -104,10 +104,12 @@ container-fluid {
 /* unvisited link */
 .class-link:link {
     color: #1c3c5c;
+    font-family: 'Rock Salt', cursive;
 }
 
 /* visited link */
 .class-link:visited {
+
     color: #1c3c5c;
 }
 

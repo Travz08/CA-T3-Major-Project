@@ -6,13 +6,12 @@ import Linkify from 'react-linkify';
 class SinglePost extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.post.log_id)
-    console.log(this.props.post.image_url)
   }
 
   render() {
     if (this.props.post.log_id == this.props.logId) {
       return  (
+        <Card className="postBox">
         <CardBody>
           <Media left>
           <Media object src={this.props.post.image_url} alt="Profile Picture" />
@@ -23,8 +22,8 @@ class SinglePost extends Component {
           <Linkify>
           <CardText className="postContent">{this.props.post.content}</CardText>
           </Linkify>
-
         </CardBody>
+        </Card>
       );
     } else {
       return (

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-
+import LandingImage from '../retrospect.png'
 
 class Landing extends Component {
 
   render() {
     return (
-      <div> <h2 className="dashboard">Study Smarter</h2> </div>
+      <div>
+        <img className="landing_image" src={LandingImage} alt="" />
+       </div>
     )
   }
 };

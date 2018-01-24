@@ -135,6 +135,7 @@ app.post('/post/new', (req, res) => {
     content: req.body.content,
     log_id: req.body.log_id,
     user_id: req.body.user_id,
+    profileName: req.body.profileName,
     image_url: req.body.image_url
   });
   // will save model to database.

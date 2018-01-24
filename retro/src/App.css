@@ -6,6 +6,7 @@ body {
   background-color: #ec5037;
 }
 
+
 container-fluid {
   overflow-x: scroll;
 }
@@ -29,7 +30,7 @@ container-fluid {
 
 .list-group-item-heading {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   font-size: 2.25rem;
 
 }
@@ -63,6 +64,44 @@ container-fluid {
   text-align: center;
 }
 
+.class-link {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* unvisited link */
+.class-link:link {
+    color: #1c3c5c;
+}
+
+/* visited link */
+.class-link:visited {
+    color: #1c3c5c;
+}
+
+/* mouse over link */
+.class-link:hover {
+    color: #fff;
+    background-color: #1c3c5c;
+}
+
+
+
 .class-list {
   margin-top: 50px;
+  /*width: 400px;*/
+  display: flex;
+  justify-content: center;
+}
+
+.class-header {
+  color: #fff;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.logBase {
+  overflow-y: scroll;
 }

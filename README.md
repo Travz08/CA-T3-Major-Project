@@ -48,7 +48,16 @@ Currently, Retrospect is in version 1 where the key features are below
 
 The features that will be included in version 2 is below
 - Student can search for notes
-- Students can filter by weeks =
+- Students can filter by weeks 
+
+The Google Drive can be accessed by clicking the link below
+[Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)
+
+The React App can be seen by clicking the link below
+[Retrospect React App](https://retrospect.netlify.com)
+
+The link to the API can be found by clicking the link below
+[Retrospect API](https://namenotesapi.herokuapp.com)
 
 
 ### 2. Instillation
@@ -120,4 +129,4 @@ The ERD can be found below where we have models of users, posts, logs and classe
 
 1. When the user creates a new log, they can't create a post on that log straight away. They can only create the post on that log after they refresh the page.
 1. The application deployed on Heroku has some routing issues and so struggles to display the view to the screen.
-1.
+1. When scrolling sideways in the logs, the logs sometimes go behind another log. 

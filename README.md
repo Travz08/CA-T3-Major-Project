@@ -50,14 +50,20 @@ The features that will be included in version 2 is below
 - Student can search for notes
 - Students can filter by weeks 
 
+
+## Deliverables 
+
 The Google Drive can be accessed by clicking the link below
-[Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)
+**[Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)**
+
+The Powerpoint/User Surveys for Retrospect can be found by clicking the link below 
+**[Retrospect Powerpoint/User Surveys](https://drive.google.com/drive/folders/18dMTbIevVgrQFX8hU_2bxU-CwauccT8w?usp=sharing)**
 
 The React App can be seen by clicking the link below
-[Retrospect React App](https://retrospect.netlify.com)
+**[Retrospect React App](https://retrospect.netlify.com)**
 
 The link to the API can be found by clicking the link below
-[Retrospect API](https://namenotesapi.herokuapp.com)
+**[Retrospect API](https://namenotesapi.herokuapp.com)**
 
 
 ### 2. Instillation

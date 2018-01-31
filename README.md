@@ -54,16 +54,16 @@ The features that will be included in version 2 is below
 ## Deliverables 
 
 The Google Drive can be accessed by clicking the link below
-![Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)
+[Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)
 
 The Powerpoint/User Surveys for Retrospect can be found by clicking the link below 
-![Retrospect Powerpoint/User Surveys](https://drive.google.com/drive/folders/18dMTbIevVgrQFX8hU_2bxU-CwauccT8w?usp=sharing)
+[Retrospect Powerpoint/User Surveys](https://drive.google.com/drive/folders/18dMTbIevVgrQFX8hU_2bxU-CwauccT8w?usp=sharing)
 
 The link to the API can be found by clicking the link below
-![Retrospect API](https://namenotesapi.herokuapp.com)
+[Retrospect API](https://namenotesapi.herokuapp.com)
 
 Link to the React App can be seen by clicking the link below 
-![Retrospect React App](https://retrospect.netlify.com/classroom/5a67e0c5e927f80014f3347f)
+[Retrospect React App](https://retrospect.netlify.com/classroom/5a67e0c5e927f80014f3347f)
 
 ### 2. Instillation
 
@@ -117,7 +117,7 @@ The client meetings can be found below where we had constant contact with Mr.Blo
 
 ### 7. User Stories
 A link to user stories can be found here
-![User Stories](https://trello.com/invite/b/NvwLF3kV/168b7b3eda7b26a69cc960e37206e40b/client-liaison-checklist)
+[User Stories](https://trello.com/invite/b/NvwLF3kV/168b7b3eda7b26a69cc960e37206e40b/client-liaison-checklist)
 
 
 ### 8. Wireframes  

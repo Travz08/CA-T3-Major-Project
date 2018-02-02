@@ -48,21 +48,21 @@ Currently, Retrospect is in version 1 where the key features are below
 
 The features that will be included in version 2 is below
 - Student can search for notes
-- Students can filter by weeks 
+- Students can filter by weeks
 
 
-## Deliverables 
+## Deliverables
 
 The Google Drive can be accessed by clicking the link below
 [Retrospect Google Doc](https://drive.google.com/drive/folders/1qzEUbyDDV3xsaccnVq8wGruFlC-Jo28o?usp=sharing)
 
-The Powerpoint/User Surveys for Retrospect can be found by clicking the link below 
+The Powerpoint/User Surveys for Retrospect can be found by clicking the link below
 [Retrospect Powerpoint/User Surveys](https://drive.google.com/drive/folders/18dMTbIevVgrQFX8hU_2bxU-CwauccT8w?usp=sharing)
 
 The link to the API can be found by clicking the link below
 [Retrospect API](https://namenotesapi.herokuapp.com)
 
-Link to the React App can be seen by clicking the link below 
+Link to the React App can be seen by clicking the link below
 [Retrospect React App](https://retrospect.netlify.com/classroom/5a67e0c5e927f80014f3347f)
 
 ### 2. Instillation
@@ -117,7 +117,7 @@ The client meetings can be found below where we had constant contact with Mr.Blo
 
 ### 7. User Stories
 A link to user stories can be found here
-[User Stories](https://trello.com/invite/b/NvwLF3kV/168b7b3eda7b26a69cc960e37206e40b/client-liaison-checklist)
+[User Stories](https://trello.com/b/mJbf0K9S/user-stories)
 
 
 ### 8. Wireframes  
@@ -134,4 +134,4 @@ The ERD can be found below where we have models of users, posts, logs and classe
 
 1. When the user creates a new log, they can't create a post on that log straight away. They can only create the post on that log after they refresh the page.
 1. The application deployed on Heroku has some routing issues and so struggles to display the view to the screen.
-1. When scrolling sideways in the logs, the logs sometimes go behind another log. 
+1. When scrolling sideways in the logs, the logs sometimes go behind another log.
